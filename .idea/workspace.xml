@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="first file">
-      <change afterPath="$PROJECT_DIR$/.idea/Fotopotencial_QGIS.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QGIS_reader offline.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader offline.py" afterDir="false" />
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="adding offline raster">
+      <change afterPath="$PROJECT_DIR$/QGIS_reader_WMS.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QGIS_reader offline.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_offline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1758755952539</updated>
-      <workItem from="1758755953544" duration="1734000" />
+      <workItem from="1758755953544" duration="2194000" />
     </task>
     <task id="LOCAL-00001" summary="first file">
       <option name="closed" value="true" />
@@ -94,7 +90,23 @@
       <option name="project" value="LOCAL" />
       <updated>1758756067717</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="first file">
+      <option name="closed" value="true" />
+      <created>1758757765309</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1758757765309</updated>
+    </task>
+    <task id="LOCAL-00003" summary="adding offline raster">
+      <option name="closed" value="true" />
+      <created>1758757794097</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1758757794097</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,9 +125,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first file" />
-    <option name="LAST_COMMIT_MESSAGE" value="first file" />
+    <MESSAGE value="adding offline raster" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding offline raster" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Fotopotencial_QGIS$QGIS_reader_offline.coverage" NAME="QGIS_reader offline Coverage Results" MODIFIED="1758757434180" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Fotopotencial_QGIS$QGIS_reader_offline.coverage" NAME="QGIS_reader offline Coverage Results" MODIFIED="1758757702824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
