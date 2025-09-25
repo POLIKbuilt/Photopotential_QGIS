@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="Created WMS run file">
-      <change afterPath="$PROJECT_DIR$/QGIS_reader_offline_COPY.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QGIS_reader_offline.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_offline.py" afterDir="false" />
-    </list>
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="Tests for offline loading raster" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,6 +52,7 @@
     "Python.QGIS_reader offline.executor": "Run",
     "Python.QGIS_reader_WMS.executor": "Run",
     "Python.QGIS_reader_offline.executor": "Run",
+    "Python.QGIS_reader_offline_COPY.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
@@ -89,7 +86,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1758755952539</updated>
-      <workItem from="1758755953544" duration="3959000" />
+      <workItem from="1758755953544" duration="4344000" />
     </task>
     <task id="LOCAL-00001" summary="first file">
       <option name="closed" value="true" />
@@ -131,7 +128,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758759000177</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Tests for offline loading raster">
+      <option name="closed" value="true" />
+      <created>1758760134955</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1758760134955</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -152,10 +157,12 @@
     <MESSAGE value="first file" />
     <MESSAGE value="adding offline raster" />
     <MESSAGE value="Created WMS run file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created WMS run file" />
+    <MESSAGE value="Tests for offline loading raster" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tests for offline loading raster" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Fotopotencial_QGIS$QGIS_reader_offline.coverage" NAME="QGIS_reader_offline Coverage Results" MODIFIED="1758759346523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Fotopotencial_QGIS$QGIS_reader_WMS.coverage" NAME="QGIS_reader_WMS Coverage Results" MODIFIED="1758758188520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Fotopotencial_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1758760058359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
