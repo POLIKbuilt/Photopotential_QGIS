@@ -1,8 +1,4 @@
-from qgis.core import (
-    QgsApplication,
-    QgsRasterLayer,
-    QgsProject
-)
+from qgis.core import *
 
 qgs = QgsApplication([], False)
 qgs.initQgis()
