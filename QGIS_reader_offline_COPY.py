@@ -1,12 +1,10 @@
+# Copy for in QGIS testing
+
 import os
 from qgis.core import *
 
-QgsApplication.setPrefixPath("D://Program DATA/QGIS", True)
 
-qgs = QgsApplication([], True)
-qgs.initQgis()
-
-file_path = os.path.dirname(os.path.realpath(__file__))
+file_path = os.path.dirname(QgsProject.instance().fileName())
 raster_path = os.path.join(file_path, "data/test_raster.tif")
 
 raster_layer = QgsRasterLayer(raster_path, "Elevation")
@@ -17,6 +15,5 @@ if raster_layer.isValid():
 else:
     print("Raster layer is not valid")
 
-qgs.exitQgis()
 
 
