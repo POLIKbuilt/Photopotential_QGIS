@@ -15,5 +15,6 @@ if raster_layer.isValid():
 else:
     print("Raster layer is not valid")
 
+# add to new git
 
 
