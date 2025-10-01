@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="filed modified">
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="filed modified, offline raster fixed, hillshade render added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QGIS_reader_offline.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_offline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QGIS_reader_WMS.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_WMS.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +263,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759355684024</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="filed modified, offline raster fixed, hillshade render added">
+      <option name="closed" value="true" />
+      <created>1759356547873</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1759356547873</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,12 +299,13 @@
     <MESSAGE value="offline raster fix, rsun parameters" />
     <MESSAGE value="main added" />
     <MESSAGE value="filed modified" />
-    <option name="LAST_COMMIT_MESSAGE" value="filed modified" />
+    <MESSAGE value="filed modified, offline raster fixed, hillshade render added" />
+    <option name="LAST_COMMIT_MESSAGE" value="filed modified, offline raster fixed, hillshade render added" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Fotopotencial_QGIS$QGIS_reader_WMS.coverage" NAME="QGIS_reader_WMS Coverage Results" MODIFIED="1758758188520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Photopotential_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1759310980478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Fotopotencial_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1758825060066" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Fotopotencial_QGIS$QGIS_reader_offline.coverage" NAME="QGIS_reader_offline Coverage Results" MODIFIED="1758759346523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Fotopotencial_QGIS$QGIS_reader_WMS.coverage" NAME="QGIS_reader_WMS Coverage Results" MODIFIED="1759358193025" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Fotopotencial_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1758825060066" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
