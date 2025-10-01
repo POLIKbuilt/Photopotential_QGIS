@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="Tests for offline loading raster + changes to README.md">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QGIS_reader_offline_COPY.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_offline_COPY.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

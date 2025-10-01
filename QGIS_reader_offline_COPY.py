@@ -28,7 +28,7 @@ sun_map = processing.run("grass7:r.sun", {
 })
 
 
-raster_path = os.path.join(file_path, "data/test_raster.tif.tif")
+raster_path = os.path.join(file_path, "data/test_raster.tif")
 raster_layer = QgsRasterLayer(raster_path, "Elevation")
 
 if raster_layer.isValid():
@@ -37,7 +37,5 @@ if raster_layer.isValid():
 else:
     print("Raster layer is not valid")
 
-
-# add to new git
 
 
