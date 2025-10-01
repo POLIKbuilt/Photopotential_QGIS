@@ -43,7 +43,7 @@ def basic_layer_set(layer):
 if raster_layer.isValid():
     project = QgsProject.instance()
     for layer in project.mapLayers().values():
-        if layer.name() == layer_name
+        if layer.name() == layer_name:
             project.removeMapLayer(layer.id())
     print("Cleaning project...")
     main_layer = QgsProject.instance().addMapLayer(raster_layer)
