@@ -50,6 +50,7 @@ if raster_layer.isValid():
     print("DSM CRS:", raster_layer.crs().authid())
     # print("Sun layer check", rsun_apply(raster_path)['output'])
     # basic_layer_set(main_layer)
+    render_set(main_layer)
 else:
     print("Raster layer is not valid")
 
