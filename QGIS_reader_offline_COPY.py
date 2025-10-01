@@ -12,25 +12,18 @@ layer_name = "test layer"
 raster_layer = QgsRasterLayer(raster_path, layer_name)
 vector_layer = QgsVectorLayer(raster_path, layer_name) # dont't work, not shp file
 
-def rsun_apply():
+def rsun_apply(rpath):
 sun_map = processing.run("grass7:r.sun", {
-    'elevation': r"data/test_raster.tif",  # input DEM
-    'aspect': None,
-    'slope': None,
-    'linke': None,
-    'albedo': None,
-    'latin': 45.0,   # latitude
-    'longin': 7.0,   # longitude
+    'elevation': rpath,  # input DSM
     'day': 180,      # day of year
     'time': 12.0,    # solar time (hour)
-    'step': 0.5,
-    'nsteps': 1,
-    'distance': 1,
+    'latitude': 45.0,
+    'longitude': 7.0,
     'output': r"data/sun_radiation.tif",  # output raster
     'GRASS_REGION_PARAMETER': None,
     'GRASS_REGION_CELLSIZE_PARAMETER': 0,
-    'GRASS_RASTER_FORMAT_OPT': '',
-    'GRASS_RASTER_FORMAT_META': ''
+    'GRASS_RASTER_FORMAT_OPT': None,
+    'GRASS_RASTER_FORMAT_META': 0
 })
 
 
@@ -49,6 +42,7 @@ if raster_layer.isValid():
     project.addMapLayer(raster_layer)
     print("Raster layer loaded successfully")
     print("DSM CRS:", raster_layer.crs().authid())
+    rsun_apply(raster_path)
     # basic_layer_set(main_layer)
 else:
     print("Raster layer is not valid")
