@@ -13,19 +13,25 @@ raster_layer = QgsRasterLayer(raster_path, layer_name)
 vector_layer = QgsVectorLayer(raster_path, layer_name) # dont't work, not shp file
 
 def rsun_apply(rpath):
-sun_map = processing.run("grass7:r.sun", {
-    'elevation': rpath,  # input DSM
-    'day': 180,      # day of year
-    'time': 12.0,    # solar time (hour)
-    'latitude': 45.0,
-    'longitude': 7.0,
-    'output': r"data/sun_radiation.tif",  # output raster
-    'GRASS_REGION_PARAMETER': None,
-    'GRASS_REGION_CELLSIZE_PARAMETER': 0,
-    'GRASS_RASTER_FORMAT_OPT': None,
-    'GRASS_RASTER_FORMAT_META': 0
-})
+    sun_map = processing.run("grass7:r.sun", {
+        'elevation': rpath,  # input DSM
+        'day': 180,      # day of year
+        'time': 12.0,    # solar time (hour)
+        'latitude': 45.0,
+        'longitude': 7.0,
+        'output': r"data/sun_radiation.tif",  # output raster
+        'GRASS_REGION_PARAMETER': None,
+        'GRASS_REGION_CELLSIZE_PARAMETER': 0,
+        'GRASS_RASTER_FORMAT_OPT': None,
+        'GRASS_RASTER_FORMAT_META': 0
+    })
+    return sun_map
 
+def render_set(layer):
+    input_layer = layer.dataPovider()
+    renderer = QgsHillshadeRenderer(input_layer, band = 1, azimuth = 315, altitude = 45)
+    layer.setRenderer(renderer)
+    layer.triggerRepaint()
 
 def basic_layer_set(layer):
     layer.setCrs(QgsCoordinateReferenceSystem("EPSG:4326"))
@@ -39,10 +45,10 @@ if raster_layer.isValid():
         if layer.name() == layer_name:
             project.removeMapLayer(layer.id())
     print("Cleaning project...")
-    project.addMapLayer(raster_layer)
+    main_layer = project.addMapLayer(raster_layer)
     print("Raster layer loaded successfully")
     print("DSM CRS:", raster_layer.crs().authid())
-    rsun_apply(raster_path)
+    # print("Sun layer check", rsun_apply(raster_path)['output'])
     # basic_layer_set(main_layer)
 else:
     print("Raster layer is not valid")
