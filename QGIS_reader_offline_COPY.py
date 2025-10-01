@@ -7,6 +7,7 @@ from qgis.core import *
 
 file_path = os.path.dirname(QgsProject.instance().fileName())
 
+"""
 sun_map = processing.run("grass7:r.sun", {
     'elevation': r"data/test_raster.tif",  # input DEM
     'aspect': None,
@@ -26,7 +27,7 @@ sun_map = processing.run("grass7:r.sun", {
     'GRASS_RASTER_FORMAT_OPT': '',
     'GRASS_RASTER_FORMAT_META': ''
 })
-
+"""
 
 raster_path = os.path.join(file_path, "data/test_raster.tif")
 raster_layer = QgsRasterLayer(raster_path, "Elevation")
