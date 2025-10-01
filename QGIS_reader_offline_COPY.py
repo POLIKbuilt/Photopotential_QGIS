@@ -36,7 +36,7 @@ sun_map = processing.run("grass7:r.sun", {
 
 def basic_layer_set(layer):
     layer.setCrs(QgsCoordinateReferenceSystem("EPSG:4326"))
-    layer.renderer().setOpacity(1)
+    layer.renderer().setOpacity(0)
     layer.resampleFilter().setZoomedInResampler(QgsBilinearRasterResampler())
     layer.resampleFilter().setZoomedOutResampler(QgsBilinearRasterResampler())
 
@@ -46,9 +46,9 @@ if raster_layer.isValid():
         if layer.name() == layer_name:
             project.removeMapLayer(layer.id())
     print("Cleaning project...")
-    main_layer = QgsProject.instance().addMapLayer(raster_layer)
+    project.addMapLayer(raster_layer)
     print("Raster layer loaded successfully")
-    basic_layer_set(main_layer)
+    # basic_layer_set(main_layer)
 else:
     print("Raster layer is not valid")
 
