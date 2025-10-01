@@ -1,7 +1,7 @@
 # Copy for in QGIS testing
 
 import os
-import processing
+# import processing
 from qgis.core import *
 
 
