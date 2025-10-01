@@ -7,6 +7,11 @@ from qgis.core import *
 
 file_path = os.path.dirname(QgsProject.instance().fileName())
 
+raster_path = os.path.join(file_path, "data/test_raster.tif")
+layer_name = "first layer"
+raster_layer = QgsRasterLayer(raster_path, layer_name)
+vector_layer = QgsVectorLayer(raster_path, layer_name)
+
 """
 sun_map = processing.run("grass7:r.sun", {
     'elevation': r"data/test_raster.tif",  # input DEM
@@ -29,14 +34,16 @@ sun_map = processing.run("grass7:r.sun", {
 })
 """
 
-raster_path = os.path.join(file_path, "data/test_raster.tif")
-layer_name = "first layer"
-raster_layer = QgsRasterLayer(raster_path, layer_name)
-vector_layer = QgsVectorLayer(raster_path, layer_name)
+def basic_layer_set(layer):
+    layer.setCrs(QgsCoordinateReferenceSystem("EPSG:4326"))
+    layer.renderer().setOpacity(0.5)
+    layer.resampleFilter().setZoomedInResampler(QgsBilinearRasterResampler())
+    layer.resampleFilter().setZoomedOutResampler(QgsBilinearRasterResampler())
 
 if raster_layer.isValid():
-    QgsProject.instance().addMapLayer(raster_layer)
+    main_layer = QgsProject.instance().addMapLayer(raster_layer)
     print("Raster layer loaded")
+    basic_layer_set(main_layer)
 else:
     print("Raster layer is not valid")
 
