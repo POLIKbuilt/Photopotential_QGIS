@@ -28,7 +28,11 @@ def rsun_apply(rpath):
     return sun_map
 
 def render_set(layer):
-    input_layer = layer.dataPovider()
+    if layer and layer.isValid():
+        print("Rerendering: ", layer.name())
+    else:
+        print("Layer is invalid or has been deleted.")
+    input_layer = layer.dataProvider()
     renderer = QgsHillshadeRenderer(input_layer, band = 1, azimuth = 315, altitude = 45)
     layer.setRenderer(renderer)
     layer.triggerRepaint()
