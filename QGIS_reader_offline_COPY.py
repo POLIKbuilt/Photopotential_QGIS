@@ -1,7 +1,7 @@
 # Copy for in QGIS testing
 
 import os
-# import processing
+import processing
 from qgis.core import *
 
 
@@ -10,9 +10,9 @@ file_path = os.path.dirname(QgsProject.instance().fileName())
 raster_path = os.path.join(file_path, "data/test_raster.tif")
 layer_name = "test layer"
 raster_layer = QgsRasterLayer(raster_path, layer_name)
-vector_layer = QgsVectorLayer(raster_path, layer_name)
+vector_layer = QgsVectorLayer(raster_path, layer_name) # dont't work, not shp file
 
-"""
+def rsun_apply():
 sun_map = processing.run("grass7:r.sun", {
     'elevation': r"data/test_raster.tif",  # input DEM
     'aspect': None,
@@ -32,7 +32,7 @@ sun_map = processing.run("grass7:r.sun", {
     'GRASS_RASTER_FORMAT_OPT': '',
     'GRASS_RASTER_FORMAT_META': ''
 })
-"""
+
 
 def basic_layer_set(layer):
     layer.setCrs(QgsCoordinateReferenceSystem("EPSG:4326"))
@@ -48,6 +48,7 @@ if raster_layer.isValid():
     print("Cleaning project...")
     project.addMapLayer(raster_layer)
     print("Raster layer loaded successfully")
+    print("DSM CRS:", raster_layer.crs().authid())
     # basic_layer_set(main_layer)
 else:
     print("Raster layer is not valid")
