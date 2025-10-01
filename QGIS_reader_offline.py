@@ -26,13 +26,13 @@ def rsun_apply(rpath):
     })
     return sun_map
 
-def render_set(layer):
+def render_set(layer, azimuth, altitude):
     if layer and layer.isValid():
         print("Rerendering: ", layer.name())
     else:
         print("Layer is invalid or has been deleted.")
     input_layer = layer.dataProvider()
-    renderer = QgsHillshadeRenderer(input_layer, band = 1, azimuth = 315, altitude = 45)
+    renderer = QgsHillshadeRenderer( input_layer, 1, azimuth, altitude)
     layer.setRenderer(renderer)
     layer.triggerRepaint()
 
@@ -53,7 +53,7 @@ if raster_layer.isValid():
     print("DSM CRS:", raster_layer.crs().authid())
     # print("Sun layer check", rsun_apply(raster_path)['output'])
     # basic_layer_set(main_layer)
-    render_set(main_layer)
+    render_set(main_layer, 315, 45)
 else:
     print("Raster layer is not valid")
 
