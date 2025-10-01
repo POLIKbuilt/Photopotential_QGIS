@@ -1,9 +1,7 @@
 # Copy for in QGIS testing
-
 import os
 import processing
 from qgis.core import *
-
 
 file_path = os.path.dirname(QgsProject.instance().fileName())
 raster_path = os.path.join(file_path, "data/test_raster.tif")
