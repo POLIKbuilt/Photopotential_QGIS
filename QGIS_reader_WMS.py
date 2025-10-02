@@ -8,8 +8,8 @@ wms_layer = QgsRasterLayer(wms_url, layer_name, "wms")
 
 def coordinate_boxing(xMin, xMax, yMin, yMax):
     extender = QgsRectangle(xMin, yMin, xMax, yMax)
-    layer.setRenderer(renderer)
-    layer.triggerRepaint()
+    iface.mapCanvas().setExtent(extender)
+    iface.mapCanvas().refresh()
 
 
 if wms_layer.isValid():
