@@ -1,10 +1,10 @@
 from qgis.core import *
+from constants import *
 from qgis.gui import QgsMapCanvas
 
 # WMS working, only needs correct data
-layer_name = "WMS_layer"
 wms_url = "crs=CRS:84&dpiMode=7&format=image/png&layers=0&styles&url=https://zbgisws.skgeodesy.sk/zbgis_dmr_wms/service.svc/get"
-wms_layer = QgsRasterLayer(wms_url, layer_name, "wms")
+wms_layer = QgsRasterLayer(wms_url, LAYER_NAME, "wms")
 
 def init_qgis_app(): 
     app = QgsApplication([], False)
