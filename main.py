@@ -1,5 +1,5 @@
 import QGIS_reader_WMS
-import QGIS_reader_offline
 
-if __name__ == "__main__":
-    QGIS_reader_WMS.wms_run()
+qgs = QGIS_reader_WMS.init_qgis_app()
+QGIS_reader_WMS.wms_run()
+qgs.exitQgis()

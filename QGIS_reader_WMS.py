@@ -4,10 +4,11 @@ from qgis.gui import QgsMapCanvas
 from pyproj import Transformer 
 
 # WMS working, only needs correct data
-wms_url = "crs=CRS:84&dpiMode=7&format=image/png&layers=0&styles&url=https://zbgisws.skgeodesy.sk/zbgis_dmr_wms/service.svc/get"
+wms_url = "crs=EPSG:4326&dpiMode=7&format=image/png&layers=0&styles&url=https://zbgisws.skgeodesy.sk/zbgis_dmr_wms/service.svc/get"
+# wms_url = "crs=EPSG:3857&dpiMode=7&format=image/png&layers=0&styles&url=https://ags.nrc.sk/arcgis/services/Rastry/DMR5G/MapServer/WMSServer?"
 
 def init_qgis_app(): 
-    app = QgsApplication([], False)
+    app = QgsApplication([], True)
     app.initQgis()
     return app
 
@@ -26,8 +27,9 @@ def wms_layer_load():
         raise Exception("WMS layer loading failed")
 
 def cords_to_xy(lat, lon): 
-    trn = Transformer.from_crs("EPSG:4326", "CSR:84", always_xy = True)
-    x, y = trn.transfrom(lon, lat)
+    trn = Transformer.from_crs("EPSG:4326", "EPSG:3857", always_xy = True)
+    x, y = trn.transform(lon, lat)
+    print(x, y)
     return x, y
     
 def render_set(layer, azimuth, altitude):
@@ -41,14 +43,14 @@ def render_set(layer, azimuth, altitude):
     layer.triggerRepaint()
 
 def boxing(lat, lon, radius):
-    center_x, center_y = cords_to_xy(lat, lon)
+    center_x, center_y = lon, lat
     half = radius / 2
     box = QgsRectangle(center_x - half, center_y - half, center_x + half, center_y + half)
-    canvas = iface.mapCanvas()
+    canvas = QgsMapCanvas()
     canvas.setExtent(box)
     canvas.refresh
 
 def wms_run():
     dsm_layer = wms_layer_load()
     render_set(dsm_layer, 315, 45)
-    boxing(ZONE_LAT, ZONE_LON, BOX_RADIUS)
+    boxing(ZONE_LAT, ZONE_LON, 5000)
