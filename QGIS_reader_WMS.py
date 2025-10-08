@@ -1,4 +1,5 @@
 from qgis.core import *
+from qgis.gui import QgsMapCanvas
 from QGIS_reader_offline import render_set
 
 # WMS working, only needs correct data
