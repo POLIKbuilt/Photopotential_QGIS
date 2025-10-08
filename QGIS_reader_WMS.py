@@ -1,6 +1,5 @@
 from qgis.core import *
 from qgis.gui import QgsMapCanvas
-from QGIS_reader_offline import render_set
 
 # WMS working, only needs correct data
 layer_name = "WMS_layer"
@@ -11,6 +10,16 @@ def init_qgis_app():
     app = QgsApplication([], False)
     app.initQgis()
     return app
+
+def render_set(layer, azimuth, altitude):
+    if layer and layer.isValid():
+        print("Rerendering: ", layer.name())
+    else:
+        print("Layer is invalid or has been deleted.")
+    input_layer = layer.dataProvider()
+    renderer = QgsHillshadeRenderer( input_layer, 1, azimuth, altitude)
+    layer.setRenderer(renderer)
+    layer.triggerRepaint()
 
 def coordinate_boxing(xMin, xMax, yMin, yMax):
     extender = QgsRectangle(xMin, yMin, xMax, yMax)
