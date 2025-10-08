@@ -27,7 +27,7 @@ def wms_layer_load():
         raise Exception("WMS layer loading failed")
 
 def cords_to_xy(lat, lon): 
-    trn = Transformer.from_crs("EPSG:4326", "EPSG:3857", always_xy = True)
+    trn = Transformer.from_crs("EPSG:3857", "EPSG:4326", always_xy = True)
     x, y = trn.transform(lon, lat)
     print(x, y)
     return x, y
@@ -43,7 +43,7 @@ def render_set(layer, azimuth, altitude):
     layer.triggerRepaint()
 
 def boxing(lat, lon, radius):
-    center_x, center_y = lon, lat
+    center_x, center_y = cords_to_xy(lat, lon)
     half = radius / 2
     box = QgsRectangle(center_x - half, center_y - half, center_x + half, center_y + half)
     canvas = QgsMapCanvas()
