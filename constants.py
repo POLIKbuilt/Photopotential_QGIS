@@ -1,1 +1,4 @@
 LAYER_NAME = "Working layer"
+
+ZONE_LAT = 48.198583  # 48°11'54.9"N
+ZONE_LON = 17.055028  # 17°03'18.1"E
