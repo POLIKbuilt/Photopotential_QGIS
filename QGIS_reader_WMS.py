@@ -1,6 +1,7 @@
-from qgis.core import *
 from constants import *
+from qgis.core import *
 from qgis.gui import QgsMapCanvas
+from pyproj import Transformer 
 
 # WMS working, only needs correct data
 wms_url = "crs=CRS:84&dpiMode=7&format=image/png&layers=0&styles&url=https://zbgisws.skgeodesy.sk/zbgis_dmr_wms/service.svc/get"
@@ -11,6 +12,11 @@ def init_qgis_app():
     app.initQgis()
     return app
 
+def cords_to_xy(lon, lat): 
+    transformer = Transformer.from_crs("EPSG:4326", "CSR:84", always_xy = True)
+    x, y = transfromer.transfrom(lon, lat)
+    return x, y
+    
 def render_set(layer, azimuth, altitude):
     if layer and layer.isValid():
         print("Rerendering: ", layer.name())
