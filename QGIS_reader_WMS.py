@@ -6,6 +6,11 @@ layer_name = "WMS_layer"
 wms_url = "crs=CRS:84&dpiMode=7&format=image/png&layers=0&styles&url=https://zbgisws.skgeodesy.sk/zbgis_dmr_wms/service.svc/get"
 wms_layer = QgsRasterLayer(wms_url, layer_name, "wms")
 
+def init_qgis_app(): 
+    app = QgsApplication([], False)
+    app.initQgis()
+    return app
+
 def coordinate_boxing(xMin, xMax, yMin, yMax):
     extender = QgsRectangle(xMin, yMin, xMax, yMax)
     iface.mapCanvas().setExtent(extender)
