@@ -5,14 +5,28 @@ from pyproj import Transformer
 
 # WMS working, only needs correct data
 wms_url = "crs=CRS:84&dpiMode=7&format=image/png&layers=0&styles&url=https://zbgisws.skgeodesy.sk/zbgis_dmr_wms/service.svc/get"
-wms_layer = QgsRasterLayer(wms_url, LAYER_NAME, "wms")
+
 
 def init_qgis_app(): 
     app = QgsApplication([], False)
     app.initQgis()
     return app
 
-def cords_to_xy(lon, lat): 
+def wms_layer_load(): 
+    wms_layer = QgsRasterLayer(wms_url, LAYER_NAME, "wms")
+    if wms_layer.isValid():
+        project = QgsProject.instance()
+        for layer in project.mapLayers().values():
+            if layer.name() == LAYER_NAME:
+                project.removeMapLayer(layer.id())
+        print("Cleaning project...")
+        project.addMapLayer(wms_layer)
+        print("WMS loaded successfully")
+        return wms_layer
+    else:
+        raise Exception("WMS layer loading failed")
+
+def cords_to_xy(lat, lon): 
     transformer = Transformer.from_crs("EPSG:4326", "CSR:84", always_xy = True)
     x, y = transfromer.transfrom(lon, lat)
     return x, y
@@ -27,22 +41,13 @@ def render_set(layer, azimuth, altitude):
     layer.setRenderer(renderer)
     layer.triggerRepaint()
 
-def coordinate_boxing(xMin, xMax, yMin, yMax):
-    extender = QgsRectangle(xMin, yMin, xMax, yMax)
-    iface.mapCanvas().setExtent(extender)
-    iface.mapCanvas().refresh()
+def create_box(lat, lon, radius):
+    center_x, center_y = cords_to_xy(lat, lon)
+    half = radius / 2
+    return QgsRectangle(center_x - half, center_y - half, center_x + half, center_y + half)
 
-
-if wms_layer.isValid():
-    project = QgsProject.instance()
-    for layer in project.mapLayers().values():
-        if layer.name() == layer_name:
-            project.removeMapLayer(layer.id())
-    print("Cleaning project...")
-    working_layer = project.addMapLayer(wms_layer)
-    print("WMS loaded successfully")
-    render_set(working_layer, 315, 45)
-    coordinate_boxing(823000, 5930000, 833000, 5940000)
-else:
-    print("WMS failed")
-
+def wms_run():
+    dsm_layer = wms_layer_load()
+    render_set(dsm_layer, 315, 45)
+    box = create_box(ZONE_LAT, ZONE_LON, BOX_RADIUS)
+    
