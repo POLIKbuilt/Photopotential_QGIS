@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="testing coordinate boxing for wms">
-      <change afterPath="$PROJECT_DIR$/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QGIS_reader_offline.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_offline.py" afterDir="false" />
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="created constants.py">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +93,7 @@
       <workItem from="1758819317955" duration="2981000" />
       <workItem from="1759094331499" duration="780000" />
       <workItem from="1759099164157" duration="1263000" />
-      <workItem from="1759907739714" duration="395000" />
+      <workItem from="1759907739714" duration="822000" />
     </task>
     <task id="LOCAL-00001" summary="first file">
       <option name="closed" value="true" />
@@ -305,7 +303,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759401492020</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="created constants.py">
+      <option name="closed" value="true" />
+      <created>1759908160355</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1759908160355</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,7 +344,8 @@
     <MESSAGE value="GUI turned off" />
     <MESSAGE value="WMS tests completed with success" />
     <MESSAGE value="adding coordinate boxing for wms" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding coordinate boxing for wms" />
+    <MESSAGE value="created constants.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="created constants.py" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Fotopotencial_QGIS$QGIS_reader_WMS.coverage" NAME="QGIS_reader_WMS Coverage Results" MODIFIED="1758758188520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
