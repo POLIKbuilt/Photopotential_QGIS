@@ -6,7 +6,6 @@ from pyproj import Transformer
 # WMS working, only needs correct data
 wms_url = "crs=CRS:84&dpiMode=7&format=image/png&layers=0&styles&url=https://zbgisws.skgeodesy.sk/zbgis_dmr_wms/service.svc/get"
 
-
 def init_qgis_app(): 
     app = QgsApplication([], False)
     app.initQgis()
@@ -41,13 +40,15 @@ def render_set(layer, azimuth, altitude):
     layer.setRenderer(renderer)
     layer.triggerRepaint()
 
-def create_box(lat, lon, radius):
+def boxing(lat, lon, radius):
     center_x, center_y = cords_to_xy(lat, lon)
     half = radius / 2
-    return QgsRectangle(center_x - half, center_y - half, center_x + half, center_y + half)
+    box = QgsRectangle(center_x - half, center_y - half, center_x + half, center_y + half)
+    canvas = iface.mapCanvas()
+    canvas.setExtent(box)
+    canvas.refresh
 
 def wms_run():
     dsm_layer = wms_layer_load()
     render_set(dsm_layer, 315, 45)
-    box = create_box(ZONE_LAT, ZONE_LON, BOX_RADIUS)
-    
+    boxing(ZONE_LAT, ZONE_LON, BOX_RADIUS)
