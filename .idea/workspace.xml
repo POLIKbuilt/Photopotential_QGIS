@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="adding coordinate boxing for wms">
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="testing coordinate boxing for wms">
+      <change afterPath="$PROJECT_DIR$/constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QGIS_reader_WMS.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_WMS.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QGIS_reader_offline.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_offline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +32,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/POLIKbuilt/Photopotential_QGIS.git&quot;,
-    &quot;accountId&quot;: &quot;c3518bad-590c-4243-be89-4667020ea243&quot;
+    &quot;url&quot;: &quot;https://github.com/POLIKbuilt/Photopotential_QGIS&quot;,
+    &quot;accountId&quot;: &quot;5f0a526f-15fd-43c2-83b1-63585a9bbc47&quot;
   }
 }</component>
   <component name="ProblemsViewState">
@@ -94,6 +95,7 @@
       <workItem from="1758819317955" duration="2981000" />
       <workItem from="1759094331499" duration="780000" />
       <workItem from="1759099164157" duration="1263000" />
+      <workItem from="1759907739714" duration="395000" />
     </task>
     <task id="LOCAL-00001" summary="first file">
       <option name="closed" value="true" />

@@ -2,12 +2,12 @@
 import os
 import processing
 from qgis.core import *
+from constants import *
 
 file_path = os.path.dirname(QgsProject.instance().fileName())
 raster_path = os.path.join(file_path, "data/test_raster.tif")
-layer_name = "test layer"
-raster_layer = QgsRasterLayer(raster_path, layer_name)
-vector_layer = QgsVectorLayer(raster_path, layer_name) # dont't work, not shp file
+raster_layer = QgsRasterLayer(raster_path, LAYER_NAME)
+vector_layer = QgsVectorLayer(raster_path, LAYER_NAME) # dont't work, not shp file
 
 def rsun_apply(rpath):
     sun_map = processing.run("grass7:r.sun", {

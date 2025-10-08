@@ -1,0 +1,1 @@
+LAYER_NAME = "Working layer"
