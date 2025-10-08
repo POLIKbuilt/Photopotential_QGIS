@@ -1,6 +1,5 @@
 # Copy for in QGIS testing
 import os
-import processing
 from qgis.core import *
 from constants import *
 
@@ -8,21 +7,6 @@ file_path = os.path.dirname(QgsProject.instance().fileName())
 raster_path = os.path.join(file_path, "data/test_raster.tif")
 raster_layer = QgsRasterLayer(raster_path, LAYER_NAME)
 vector_layer = QgsVectorLayer(raster_path, LAYER_NAME) # dont't work, not shp file
-
-def rsun_apply(rpath):
-    sun_map = processing.run("grass7:r.sun", {
-        'elevation': rpath,  # input DSM
-        'day': 180,      # day of year
-        'time': 12.0,    # solar time (hour)
-        'latitude': 45.0,
-        'longitude': 7.0,
-        'output': r"data/sun_radiation.tif",  # output raster
-        'GRASS_REGION_PARAMETER': None,
-        'GRASS_REGION_CELLSIZE_PARAMETER': 0,
-        'GRASS_RASTER_FORMAT_OPT': None,
-        'GRASS_RASTER_FORMAT_META': 0
-    })
-    return sun_map
 
 def render_set(layer, azimuth, altitude):
     if layer and layer.isValid():

@@ -26,8 +26,8 @@ def wms_layer_load():
         raise Exception("WMS layer loading failed")
 
 def cords_to_xy(lat, lon): 
-    transformer = Transformer.from_crs("EPSG:4326", "CSR:84", always_xy = True)
-    x, y = transfromer.transfrom(lon, lat)
+    trn = Transformer.from_crs("EPSG:4326", "CSR:84", always_xy = True)
+    x, y = trn.transfrom(lon, lat)
     return x, y
     
 def render_set(layer, azimuth, altitude):
@@ -36,7 +36,7 @@ def render_set(layer, azimuth, altitude):
     else:
         print("Layer is invalid or has been deleted.")
     input_layer = layer.dataProvider()
-    renderer = QgsHillshadeRenderer( input_layer, 1, azimuth, altitude)
+    renderer = QgsHillshadeRenderer(input_layer, 1, azimuth, altitude)
     layer.setRenderer(renderer)
     layer.triggerRepaint()
 
