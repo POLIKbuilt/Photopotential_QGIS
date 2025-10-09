@@ -1,11 +1,14 @@
 from constants import *
 from qgis.core import *
 from qgis.gui import QgsMapCanvas
-from pyproj import Transformer 
+from pyproj import Transformer
+from osgeo import gdal
 
 # WMS working, only needs correct data
 wms_url = "crs=EPSG:4326&dpiMode=7&format=image/png&layers=0&styles&url=https://zbgisws.skgeodesy.sk/zbgis_dmr_wms/service.svc/get"
 # wms_url = "crs=EPSG:3857&dpiMode=7&format=image/png&layers=0&styles&url=https://ags.nrc.sk/arcgis/services/Rastry/DMR5G/MapServer/WMSServer?"
+
+OUTPUT_LAYER = r"data/output.tif"
 
 def init_qgis_app(): 
     app = QgsApplication([], True)
@@ -27,7 +30,7 @@ def wms_layer_load():
         raise Exception("WMS layer loading failed")
 
 def cords_to_xy(lat, lon): 
-    trn = Transformer.from_crs("EPSG:3857", "EPSG:4326", always_xy = True)
+    trn = Transformer.from_crs("EPSG:4326", "EPSG:3857", always_xy = True)
     x, y = trn.transform(lon, lat)
     print(x, y)
     return x, y
@@ -42,15 +45,15 @@ def render_set(layer, azimuth, altitude):
     layer.setRenderer(renderer)
     layer.triggerRepaint()
 
-def boxing(lat, lon, radius):
+def boxing(lat, lon, radius, layer, output):
     center_x, center_y = cords_to_xy(lat, lon)
     half = radius / 2
     box = QgsRectangle(center_x - half, center_y - half, center_x + half, center_y + half)
-    canvas = QgsMapCanvas()
-    canvas.setExtent(box)
-    canvas.refresh
+    src = layer.dataProvider().dataSourceUri()
+    gdal.Translate(destName = output, srcDS = src, projWin = [box.xMinimum(), box.yMinimum(), box.xMaximum(), box.yMaximum()], format = "GTiff")
+    print(f"DSM saved to: {output}")
 
 def wms_run():
     dsm_layer = wms_layer_load()
     render_set(dsm_layer, 315, 45)
-    boxing(ZONE_LAT, ZONE_LON, 5000)
+    boxing(ZONE_LAT, ZONE_LON, 5000, dsm_layer, OUTPUT_LAYER)
