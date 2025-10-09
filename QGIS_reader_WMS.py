@@ -8,8 +8,6 @@ from osgeo import gdal
 wms_url = "crs=EPSG:4326&dpiMode=7&format=image/png&layers=0&styles&url=https://zbgisws.skgeodesy.sk/zbgis_dmr_wms/service.svc/get"
 # wms_url = "crs=EPSG:3857&dpiMode=7&format=image/png&layers=0&styles&url=https://ags.nrc.sk/arcgis/services/Rastry/DMR5G/MapServer/WMSServer?"
 
-OUTPUT_LAYER = r"data/output.tif"
-
 def init_qgis_app(): 
     app = QgsApplication([], True)
     app.initQgis()
