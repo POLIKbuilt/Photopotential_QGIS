@@ -1,6 +1,5 @@
 from constants import *
 from qgis.core import *
-from qgis.gui import QgsMapCanvas
 from pyproj import Transformer
 from osgeo import gdal
 
@@ -26,12 +25,6 @@ def wms_layer_load():
         return wms_layer
     else:
         raise Exception("WMS layer loading failed")
-
-def cords_to_xy(lat, lon): 
-    trn = Transformer.from_crs("EPSG:4326", "EPSG:3857", always_xy = True)
-    x, y = trn.transform(lon, lat)
-    print(x, y)
-    return x, y
     
 def render_set(layer, azimuth, altitude):
     if layer and layer.isValid():
@@ -55,3 +48,5 @@ def wms_run():
     dsm_layer = wms_layer_load()
     render_set(dsm_layer, 315, 45)
     boxing(ZONE_LAT, ZONE_LON, 5000, dsm_layer, OUTPUT_LAYER)
+
+wms_run()
