@@ -4,7 +4,7 @@ from qgis.core import *
 from constants import *
 
 file_path = os.path.dirname(QgsProject.instance().fileName())
-raster_path = os.path.join(file_path, "data/test_raster.tif")
+raster_path = os.path.join(file_path, "data\output.tif")
 raster_layer = QgsRasterLayer(raster_path, LAYER_NAME)
 vector_layer = QgsVectorLayer(raster_path, LAYER_NAME) # dont't work, not shp file
 
@@ -27,7 +27,7 @@ def basic_layer_set(layer):
 if raster_layer.isValid():
     project = QgsProject.instance()
     for layer in project.mapLayers().values():
-        if layer.name() == layer_name:
+        if layer.name() == LAYER_NAME:
             project.removeMapLayer(layer.id())
     print("Cleaning project...")
     main_layer = project.addMapLayer(raster_layer)
