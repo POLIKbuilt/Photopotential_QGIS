@@ -10,19 +10,20 @@ wms_url = "crs=EPSG:4326&dpiMode=7&format=image/png&layers=0&styles&url=https://
 def init_qgis_app(): 
     app = QgsApplication([], True)
     app.initQgis()
+    print("QGIS app initialized")
     return app
 
-def wms_layer_load(): 
-    wms_layer = QgsRasterLayer(wms_url, LAYER_NAME, "wms")
-    if wms_layer.isValid():
+def wms_layer_load(layer):
+    data_layer = QgsRasterLayer(layer, LAYER_NAME)
+    if data_layer.isValid():
         project = QgsProject.instance()
         for layer in project.mapLayers().values():
             if layer.name() == LAYER_NAME:
                 project.removeMapLayer(layer.id())
         print("Cleaning project...")
-        project.addMapLayer(wms_layer)
+        project.addMapLayer(data_layer)
         print("WMS loaded successfully")
-        return wms_layer
+        return data_layer
     else:
         raise Exception("WMS layer loading failed")
     
@@ -45,8 +46,9 @@ def boxing(lat, lon, radius, layer, output):
     print(f"DSM saved to: {output}")
 
 def wms_run():
-    dsm_layer = wms_layer_load()
+    dsm_layer = wms_layer_load(wms_url)
     render_set(dsm_layer, 315, 45)
     boxing(ZONE_LAT, ZONE_LON, 5000, dsm_layer, OUTPUT_LAYER)
+    cut_layer = wms_layer_load(OUTPUT_LAYER, LAYER_NAME)
 
 wms_run()
