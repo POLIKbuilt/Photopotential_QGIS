@@ -13,8 +13,14 @@ def init_qgis_app():
     print("QGIS app initialized")
     return app
 
+def create_extent(x1, y1, x2, y2):
+    transformer = Transformer.from_crs("EPSG:4326", "EPSG:3857", always_xy=True)
+    x_min, y_min = transformer.transform(y2, x2)  # note swapped order lon,lat
+    x_max, y_max = transformer.transform(y1, x1)
+    return [x_min, y_max, x_max, y_min]
+
 def wms_layer_load(layer):
-    data_layer = QgsRasterLayer(layer, LAYER_NAME)
+    data_layer = QgsRasterLayer(layer, LAYER_NAME, "wms")
     if data_layer.isValid():
         project = QgsProject.instance()
         for layer in project.mapLayers().values():
@@ -26,7 +32,7 @@ def wms_layer_load(layer):
         return data_layer
     else:
         raise Exception("WMS layer loading failed")
-    
+
 def render_set(layer, azimuth, altitude):
     if layer and layer.isValid():
         print("Rerendering: ", layer.name())
@@ -37,18 +43,36 @@ def render_set(layer, azimuth, altitude):
     layer.setRenderer(renderer)
     layer.triggerRepaint()
 
-def boxing(lat, lon, radius, layer, output):
-    center_x, center_y = cords_to_xy(lat, lon)
-    half = radius / 2
-    box = QgsRectangle(center_x - half, center_y - half, center_x + half, center_y + half)
-    src = layer.dataProvider().dataSourceUri()
-    gdal.Translate(destName = output, srcDS = src, projWin = [box.xMinimum(), box.yMinimum(), box.xMaximum(), box.yMaximum()], format = "GTiff")
-    print(f"DSM saved to: {output}")
+def cropping(box):
+    # center_x, center_y = cords_to_xy(lat, lon)
+    # half = radius / 2
+    # box = QgsRectangle(center_x - half, center_y - half, center_x + half, center_y + half)
+    src = "WMS:https://zbgisws.skgeodesy.sk/zbgis_dmr_wms/service.svc/get"
+    ds = gdal.Open(src)
+    if ds is None:
+        raise RuntimeError("Failed to open WMS source. Check URL and GDAL WMS driver.")
+    else:
+        print("WMS connection successful:", ds.RasterXSize, ds.RasterYSize)
+    crop = gdal.Translate(destName = OUTPUT_LAYER, srcDS = src, projWin = box, projWinSRS="EPSG:3857", format = "GTiff")
+    if crop is None:
+        raise RuntimeError("GDAL failed (NULL pointer)!!!")
+    crop = None
+    print(f"DSM saved to: {OUTPUT_LAYER}")
+
+def load_layer(layer_path):
+    data_layer = QgsRasterLayer(layer_path, "Output.tiff")
+    if data_layer.isValid():
+        QgsProject.instance().addMapLayer(data_layer)
+        print("Output.tiff loaded >>>")
+    else:
+        raise Exception(f"Layer is invalid!!! Check layer file {OUTPUT_LAYER}")
+
 
 def wms_run():
-    dsm_layer = wms_layer_load(wms_url)
-    render_set(dsm_layer, 315, 45)
-    boxing(ZONE_LAT, ZONE_LON, 5000, dsm_layer, OUTPUT_LAYER)
-    cut_layer = wms_layer_load(OUTPUT_LAYER, LAYER_NAME)
+    wms_layer_load(wms_url)
+    box = [X1, Y1, X2, Y2]
+    print("Box (EPSG:3857):", box)
+    cropping(box)
+    load_layer(OUTPUT_LAYER)
 
 wms_run()

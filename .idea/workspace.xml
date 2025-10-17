@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="fix is not working">
-      <change afterPath="$PROJECT_DIR$/test_frame.py" afterDir="false" />
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="implemented arguments for loading method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QGIS_reader_WMS.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_WMS.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QGIS_reader_offline.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_offline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/constants.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +99,7 @@
       <workItem from="1759094331499" duration="780000" />
       <workItem from="1759099164157" duration="1263000" />
       <workItem from="1759907739714" duration="822000" />
-      <workItem from="1760736089966" duration="314000" />
+      <workItem from="1760736089966" duration="4597000" />
     </task>
     <task id="LOCAL-00001" summary="first file">
       <option name="closed" value="true" />
@@ -340,7 +341,31 @@
       <option name="project" value="LOCAL" />
       <updated>1759946356258</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="deleted lat/lon convertion method">
+      <option name="closed" value="true" />
+      <created>1760736732730</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1760736732730</updated>
+    </task>
+    <task id="LOCAL-00032" summary="new coordinate points added">
+      <option name="closed" value="true" />
+      <created>1760736856102</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1760736856102</updated>
+    </task>
+    <task id="LOCAL-00033" summary="implemented arguments for loading method">
+      <option name="closed" value="true" />
+      <created>1760737283264</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1760737283264</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,12 +401,15 @@
     <MESSAGE value="created constants.py" />
     <MESSAGE value="fixing WMS" />
     <MESSAGE value="fix is not working" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix is not working" />
+    <MESSAGE value="deleted lat/lon convertion method" />
+    <MESSAGE value="new coordinate points added" />
+    <MESSAGE value="implemented arguments for loading method" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented arguments for loading method" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Photopotential_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1759310980478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Fotopotencial_QGIS$QGIS_reader_offline.coverage" NAME="QGIS_reader_offline Coverage Results" MODIFIED="1758759346523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Fotopotencial_QGIS$QGIS_reader_WMS.coverage" NAME="QGIS_reader_WMS Coverage Results" MODIFIED="1760736170462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Fotopotencial_QGIS$QGIS_reader_offline.coverage" NAME="QGIS_reader_offline Coverage Results" MODIFIED="1760738344809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Fotopotencial_QGIS$QGIS_reader_WMS.coverage" NAME="QGIS_reader_WMS Coverage Results" MODIFIED="1760739144743" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Photopotential_QGIS$main.coverage" NAME="main Coverage Results" MODIFIED="1760004482960" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Fotopotencial_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1758825060066" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Fotopotencial_QGIS$main.coverage" NAME="main Coverage Results" MODIFIED="1760736140866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
