@@ -3,7 +3,7 @@
 1. Process automated loading of rasters into QGIS via Python script (complited on 01/10/2025)
     - as an offline file 
     - via WMS service
-2. Add coordinate boxing for online WMS raster 
+2. Add coordinate boxing for online WMS raster (UPD: Basic tools failed, using GDAL)
 
 
 ## Required libs and tools
