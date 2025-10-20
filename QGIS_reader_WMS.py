@@ -60,10 +60,10 @@ def cropping(box):
     print(f"DSM saved to: {OUTPUT_LAYER}")
 
 def load_layer(layer_path):
-    data_layer = QgsRasterLayer(layer_path, "Output.tiff")
+    data_layer = QgsRasterLayer(layer_path, "output.tif")
     if data_layer.isValid():
         QgsProject.instance().addMapLayer(data_layer)
-        print("Output.tiff loaded >>>")
+        print("output.tif loaded >>>")
     else:
         raise Exception(f"Layer is invalid!!! Check layer file {OUTPUT_LAYER}")
 
