@@ -1,7 +1,10 @@
+import os
 from constants import *
 from qgis.core import *
 from pyproj import Transformer
 from osgeo import gdal
+import grass.script as gscript
+import grass.script.setup as gsetup
 
 # WMS working, only needs correct data
 wms_url = "crs=EPSG:4326&dpiMode=7&format=image/png&layers=0&styles&url=https://zbgisws.skgeodesy.sk/zbgis_dmr_wms/service.svc/get"
