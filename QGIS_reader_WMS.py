@@ -79,7 +79,7 @@ def gdal_cropping(box):
     crop = None
     print(f"DSM saved to: {OUTPUT_LAYER}")
 
-def load_layer(layer_path):
+def load_output(layer_path):
     data_layer = QgsRasterLayer(layer_path, "output.tif")
     if data_layer.isValid():
         QgsProject.instance().addMapLayer(data_layer)
@@ -92,7 +92,7 @@ def wms_run():
     wms_layer_load(wms_url)
     box = [X1, Y1, X2, Y2]
     print("Box (EPSG:3857):", box)
-    cropping(box)
-    load_layer(OUTPUT_LAYER)
+    gdal_cropping(box)
+    load_output(OUTPUT_LAYER)
 
 wms_run()
