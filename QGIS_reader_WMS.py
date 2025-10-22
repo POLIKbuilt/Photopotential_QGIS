@@ -56,12 +56,12 @@ def qgis_cropping(x1, y1, x2, y2, layer, output_file):
     pipe = QgsRasterPipe()
     pipe.set(layer.renderer())
     provider = layer.dataProider()
-    if not pipe.set(proider.clone()):
+    if not pipe.set(provider.clone()):
         raise Exception("Failed to provide cropping layer")
     save = QgsRasterFileWriter(output_file)
     save.setOutputFormat("GTiff")
     save.writeRaster(pipe, layer.width(), layer.height(), box_proj, layer.crs())
-    print(f"DSM saved to: {OUTPUT_LAYER}")
+    print(f"DSM/qgis saved to: {output_file}")
 
 def gdal_cropping(box):
     # center_x, center_y = cords_to_xy(lat, lon)
@@ -77,7 +77,7 @@ def gdal_cropping(box):
     if crop is None:
         raise RuntimeError("GDAL failed (NULL pointer)!!!")
     crop = None
-    print(f"DSM saved to: {OUTPUT_LAYER}")
+    print(f"DSM/gdal saved to: {OUTPUT_LAYER}")
 
 def rgrass_cropping(x1, y1, x2, y2, layer, output_file):
     gisdb = os.path.join(os.getcwd(), "grassdata")
@@ -91,9 +91,10 @@ def rgrass_cropping(x1, y1, x2, y2, layer, output_file):
     gsetup.init(gisdb, location, mapset)
     gscript.run_command("g.proj", epsg=3857)
     gscript.run_command("r.in.gdal", input=src, output="raster_in", overwrite=True)
-
-    gscript.run_command("r.out.gdal", input="raster_crop", output=output_path,
-                        format="GTiff", createopt="COMPRESS=LZW", overwrite=True)
+    gscript.run_command("g.region", n=y_max, s=y_min, e=x_max, w=x_min)
+    gscript.run_command("r.mapcalc", expression="raster_crop = raster_in", overwrite=True)
+    gscript.run_command("r.out.gdal", input="raster_crop", output=output_file, format="GTiff", createopt="COMPRESS=LZW", overwrite=True)
+    print(f"DSM/rgrass saved to: {output_file}")
 
 def load_output(layer_path):
     data_layer = QgsRasterLayer(layer_path, "output.tif")
