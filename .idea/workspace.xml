@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="implemented arguments for loading method">
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="adding rgrass cropping command&#10;fixing errors&#10;replacing create_extent method">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QGIS_reader_WMS.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_WMS.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,12 +29,12 @@
     &quot;assignee&quot;: &quot;POLIKbuilt&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/POLIKbuilt/Photopotential_QGIS.git&quot;,
-    &quot;accountId&quot;: &quot;c3518bad-590c-4243-be89-4667020ea243&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/POLIKbuilt/Photopotential_QGIS",
+    "accountId": "5f0a526f-15fd-43c2-83b1-63585a9bbc47"
   }
-}</component>
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -363,7 +363,47 @@
       <option name="project" value="LOCAL" />
       <updated>1760737283264</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="moved x,y from constants.py to global variables">
+      <option name="closed" value="true" />
+      <created>1761114503709</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1761114503709</updated>
+    </task>
+    <task id="LOCAL-00035" summary="recreated method for cropping in qgis &gt;&gt;&gt; using basic qgis functions">
+      <option name="closed" value="true" />
+      <created>1761115260971</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1761115260971</updated>
+    </task>
+    <task id="LOCAL-00036" summary="refactored methods: load_layer &gt;&gt;&gt; load_output, cropping &gt;&gt;&gt; gdal_cropping">
+      <option name="closed" value="true" />
+      <created>1761115456171</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1761115456171</updated>
+    </task>
+    <task id="LOCAL-00037" summary="processing rgrass environment &gt;&gt;&gt; implementing rgrass_cropping method">
+      <option name="closed" value="true" />
+      <created>1761115812303</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1761115812303</updated>
+    </task>
+    <task id="LOCAL-00038" summary="adding rgrass cropping command&#10;fixing errors&#10;replacing create_extent method">
+      <option name="closed" value="true" />
+      <created>1761116171547</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1761116171547</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -381,7 +421,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="first file" />
     <MESSAGE value="adding offline raster" />
     <MESSAGE value="Created WMS run file" />
     <MESSAGE value="Tests for offline loading raster" />
@@ -402,7 +441,12 @@
     <MESSAGE value="deleted lat/lon convertion method" />
     <MESSAGE value="new coordinate points added" />
     <MESSAGE value="implemented arguments for loading method" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented arguments for loading method" />
+    <MESSAGE value="moved x,y from constants.py to global variables" />
+    <MESSAGE value="recreated method for cropping in qgis &gt;&gt;&gt; using basic qgis functions" />
+    <MESSAGE value="refactored methods: load_layer &gt;&gt;&gt; load_output, cropping &gt;&gt;&gt; gdal_cropping" />
+    <MESSAGE value="processing rgrass environment &gt;&gt;&gt; implementing rgrass_cropping method" />
+    <MESSAGE value="adding rgrass cropping command&#10;fixing errors&#10;replacing create_extent method" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding rgrass cropping command&#10;fixing errors&#10;replacing create_extent method" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Photopotential_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1759310980478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
