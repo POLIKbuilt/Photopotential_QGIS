@@ -7,6 +7,10 @@ from osgeo import gdal
 wms_url = "crs=EPSG:4326&dpiMode=7&format=image/png&layers=0&styles&url=https://zbgisws.skgeodesy.sk/zbgis_dmr_wms/service.svc/get"
 # wms_url = "crs=EPSG:3857&dpiMode=7&format=image/png&layers=0&styles&url=https://ags.nrc.sk/arcgis/services/Rastry/DMR5G/MapServer/WMSServer?"
 
+# new boxing coordinates (two points)
+X1, Y1 = 48.126167, 17.085511
+X2, Y2 = 48.114157, 17.095793
+
 def init_qgis_app(): 
     app = QgsApplication([], True)
     app.initQgis()
@@ -43,7 +47,23 @@ def render_set(layer, azimuth, altitude):
     layer.setRenderer(renderer)
     layer.triggerRepaint()
 
-def cropping(box):
+def qgis_cropping(x1, y1, x2, y2, layer, output_file):
+    crop_box = QgsRectangle(y1, x1, y2, x2)
+    src_crs = QgsCoordinateReferenceSystem("EPSG:4326")
+    dst_crs = layer.crs()
+    xfrom = QgsCoordinateTransform(src_crs, dst_crs, None)
+    box_proj = xfrom.transform(crop_box)
+    pipe = QgsRasterPipe()
+    pipe.set(layer.renderer())
+    provider = layer.dataProider()
+    if not pipe.set(proider.clone()):
+        raise Exception("Failed to provide cropping layer")
+    save = QgsRasterFileWriter(output_file)
+    save.setOutputFormat("GTiff")
+    save.writeRaster(pipe, layer.width(), layer.height(), box_proj, layer.crs())
+    print(f"DSM saved to: {OUTPUT_LAYER}")
+
+def gdal_cropping(box):
     # center_x, center_y = cords_to_xy(lat, lon)
     # half = radius / 2
     # box = QgsRectangle(center_x - half, center_y - half, center_x + half, center_y + half)
