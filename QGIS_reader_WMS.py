@@ -79,6 +79,22 @@ def gdal_cropping(box):
     crop = None
     print(f"DSM saved to: {OUTPUT_LAYER}")
 
+def rgrass_cropping(x1, y1, x2, y2, layer, output_file):
+    gisdb = os.path.join(os.getcwd(), "grassdata")
+    os.makedirs(gisdb, exist_ok=True)
+    location = "temp_location"
+    mapset = "PERMANENT"
+    src = layer.dataProvider().dataSourceUri()
+    transformer = Transformer.from_crs("EPSG:4326", "EPSG:3857", always_xy=True)
+    x_min, y_min = transformer.transform(x1, y1)
+    x_max, y_max = transformer.transform(x2, y2)
+    gsetup.init(gisdb, location, mapset)
+    gscript.run_command("g.proj", epsg=3857)
+    gscript.run_command("r.in.gdal", input=src, output="raster_in", overwrite=True)
+
+    gscript.run_command("r.out.gdal", input="raster_crop", output=output_path,
+                        format="GTiff", createopt="COMPRESS=LZW", overwrite=True)
+
 def load_output(layer_path):
     data_layer = QgsRasterLayer(layer_path, "output.tif")
     if data_layer.isValid():
