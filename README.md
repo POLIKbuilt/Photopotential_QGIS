@@ -3,9 +3,12 @@
 1. Process automated loading of rasters into QGIS via Python script (complited on 01/10/2025)
     - as an offline file 
     - via WMS service
-2. Add coordinate boxing for online WMS raster (UPD: Basic tools failed, using GDAL)
-3. Analysis of tilt and turn of roof parcels in boxing zone.
-4. Differentiation of roof vectors via QuickOSM (OverpassAPI) 
+2. Add coordinate boxing for online WMS raster
+   - Basic tools >>> failed
+   - GDAL >>> null pointer in output
+   - GRASS environment >>> testing
+4. Analysis of tilt and turn of roof parcels in boxing zone.
+5. Differentiation of roof vectors via QuickOSM (OverpassAPI) 
 
 ## Required libs and tools
 ### Tools
@@ -17,4 +20,4 @@
 - numpy (mathematics)
 - pyproj (for coordinate transforming)
 - osgeo (gdal)
-- 
+- grass.scripts && grass.scrips.setup 
