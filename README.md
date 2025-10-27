@@ -4,9 +4,11 @@
     - as an offline file 
     - via WMS service
 2. Add coordinate boxing for online WMS raster
-   - Basic tools >>> failed
+   - Basic tools >>> failed 
    - GDAL >>> null pointer in output
    - GRASS environment >>> testing
+   - Reloading WMS to offline dataset 
+   - Cropping offline WMS dataset
 4. Analysis of tilt and turn of roof parcels in boxing zone.
 5. Differentiation of roof vectors via QuickOSM (OverpassAPI) 
 
