@@ -58,7 +58,7 @@ def qgis_cropping(x1, y1, x2, y2, layer, output_file):
     box_proj = xfrom.transform(crop_box)
     pipe = QgsRasterPipe()
     pipe.set(layer.renderer())
-    provider = layer.dataProider()
+    provider = layer.dataProvider()
     if not pipe.set(provider.clone()):
         raise Exception("Failed to provide cropping layer")
     save = QgsRasterFileWriter(output_file)
@@ -70,13 +70,13 @@ def gdal_cropping(box):
     # center_x, center_y = cords_to_xy(lat, lon)
     # half = radius / 2
     # box = QgsRectangle(center_x - half, center_y - half, center_x + half, center_y + half)
-    src = "WMS:https://zbgisws.skgeodesy.sk/zbgis_dmr_wms/service.svc/get"
+    src = "data/test_raster.tif"
     ds = gdal.Open(src)
     if ds is None:
         raise RuntimeError("Failed to open WMS source. Check URL and GDAL WMS driver.")
     else:
         print("WMS connection successful:", ds.RasterXSize, ds.RasterYSize)
-    crop = gdal.Translate(destName = OUTPUT_LAYER, srcDS = src, projWin = box, projWinSRS="EPSG:3857", format = "GTiff")
+    crop = gdal.Translate(destName = OUTPUT_LAYER, srcDS = src, projWin = box, projWinSRS="EPSG:4326", format = "GTiff")
     if crop is None:
         raise RuntimeError("GDAL failed (NULL pointer)!!!")
     crop = None
@@ -84,15 +84,18 @@ def gdal_cropping(box):
 
 def rgrass_cropping(x1, y1, x2, y2, layer, output_file):
     gisdb = os.path.join(os.getcwd(), "grassdata")
-    os.makedirs(gisdb, exist_ok=True)
-    location = "temp_location"
+    location = "D:IT\Fotopotencial_QGIS\data"
     mapset = "PERMANENT"
+    location_path = os.path.join(gisdb, location)
+    mapset_path = os.path.join(location_path, mapset)
+    os.makedirs(gisdb, exist_ok=True)
     src = layer.dataProvider().dataSourceUri()
     transformer = Transformer.from_crs("EPSG:4326", "EPSG:3857", always_xy=True)
     x_min, y_min = transformer.transform(x1, y1)
     x_max, y_max = transformer.transform(x2, y2)
     gsetup.init(gisdb, location, mapset)
-    gscript.run_command("g.proj", epsg=3857)
+    if not os.path.exists(mapset_path) or not os.path.exists(os.path.join(location_path, "PERMANENT", "DEFAULT")):
+        gscript.run_command("g.proj", epsg=3857, location=location, flags="c")
     gscript.run_command("r.in.gdal", input=src, output="raster_in", overwrite=True)
     gscript.run_command("g.region", n=y_max, s=y_min, e=x_max, w=x_min)
     gscript.run_command("r.mapcalc", expression="raster_crop = raster_in", overwrite=True)
@@ -109,10 +112,10 @@ def load_output(layer_path):
 
 
 def wms_run():
-    wms_layer_load(wms_url)
-    box = [X1, Y1, X2, Y2]
-    print("Box (EPSG:3857):", box)
-    gdal_cropping(box)
+    layer = wms_layer_load(wms_url)
+    # qgis_cropping(X1, Y1, X2, Y2, layer, OUTPUT_LAYER)
+    gdal_cropping([X1, Y1, X2, Y2])
+    # rgrass_cropping(X1, Y1, X2, Y2, layer, OUTPUT_LAYER)
     load_output(OUTPUT_LAYER)
 
 wms_run()
