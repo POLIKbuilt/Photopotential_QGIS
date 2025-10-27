@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="adding rgrass cropping command&#10;fixing errors&#10;replacing create_extent method">
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="Refactored output.tif; Rewritten code for GDAL loading &gt;&gt;&gt; Error: NULL exception in output file.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QGIS_reader_WMS.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_WMS.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,12 +30,12 @@
     &quot;assignee&quot;: &quot;POLIKbuilt&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/POLIKbuilt/Photopotential_QGIS",
-    "accountId": "5f0a526f-15fd-43c2-83b1-63585a9bbc47"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/POLIKbuilt/Photopotential_QGIS.git&quot;,
+    &quot;accountId&quot;: &quot;c3518bad-590c-4243-be89-4667020ea243&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -80,7 +81,6 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-PY-252.26199.168" />
         <option value="bundled-python-sdk-b3d66beaba9a-c6efb3732140-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26199.168" />
       </set>
     </attachedChunks>
