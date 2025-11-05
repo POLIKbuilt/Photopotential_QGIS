@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="output.tif moved">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QGIS_reader_offline.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_offline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/output.tif" beforeDir="false" afterPath="$PROJECT_DIR$/data/output.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/output.tif.aux.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/output.tif.aux.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="add zoom and crop method" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -431,7 +426,39 @@
       <option name="project" value="LOCAL" />
       <updated>1762328179891</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="output.tif rewritten in process">
+      <option name="closed" value="true" />
+      <created>1762329291404</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1762329291404</updated>
+    </task>
+    <task id="LOCAL-00043" summary="rewritten in process">
+      <option name="closed" value="true" />
+      <created>1762329315240</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1762329315240</updated>
+    </task>
+    <task id="LOCAL-00044" summary="rewritten in process">
+      <option name="closed" value="true" />
+      <created>1762329320538</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1762329320538</updated>
+    </task>
+    <task id="LOCAL-00045" summary="add zoom and crop method">
+      <option name="closed" value="true" />
+      <created>1762329341948</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1762329341948</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -449,9 +476,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Tests for offline loading raster" />
-    <MESSAGE value="Tests for offline loading raster + changes to README.md" />
-    <MESSAGE value="offline raster fix" />
     <MESSAGE value="offline raster fix, parameters failed" />
     <MESSAGE value="offline raster fix, rsun parameters" />
     <MESSAGE value="main added" />
@@ -474,7 +498,10 @@
     <MESSAGE value="adding rgrass cropping command&#10;fixing errors&#10;replacing create_extent method" />
     <MESSAGE value="test workflow" />
     <MESSAGE value="output.tif moved" />
-    <option name="LAST_COMMIT_MESSAGE" value="output.tif moved" />
+    <MESSAGE value="output.tif rewritten in process" />
+    <MESSAGE value="rewritten in process" />
+    <MESSAGE value="add zoom and crop method" />
+    <option name="LAST_COMMIT_MESSAGE" value="add zoom and crop method" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Photopotential_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1759310980478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
