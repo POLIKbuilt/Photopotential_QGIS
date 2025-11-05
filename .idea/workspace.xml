@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="add zoom and crop method" />
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="adjusted coordinate search for test_raster.tif">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -458,7 +461,39 @@
       <option name="project" value="LOCAL" />
       <updated>1762329341948</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="cropping worked">
+      <option name="closed" value="true" />
+      <created>1762330752438</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1762330752438</updated>
+    </task>
+    <task id="LOCAL-00047" summary="cropping file manage">
+      <option name="closed" value="true" />
+      <created>1762330765423</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1762330765423</updated>
+    </task>
+    <task id="LOCAL-00048" summary="workflow">
+      <option name="closed" value="true" />
+      <created>1762330776430</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1762330776430</updated>
+    </task>
+    <task id="LOCAL-00049" summary="adjusted coordinate search for test_raster.tif">
+      <option name="closed" value="true" />
+      <created>1762330807026</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1762330807026</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -476,10 +511,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="offline raster fix, parameters failed" />
-    <MESSAGE value="offline raster fix, rsun parameters" />
-    <MESSAGE value="main added" />
-    <MESSAGE value="filed modified" />
     <MESSAGE value="filed modified, offline raster fixed, hillshade render added" />
     <MESSAGE value="WMS raster tests, add xml for WMS" />
     <MESSAGE value="GUI turned off" />
@@ -501,7 +532,11 @@
     <MESSAGE value="output.tif rewritten in process" />
     <MESSAGE value="rewritten in process" />
     <MESSAGE value="add zoom and crop method" />
-    <option name="LAST_COMMIT_MESSAGE" value="add zoom and crop method" />
+    <MESSAGE value="cropping worked" />
+    <MESSAGE value="cropping file manage" />
+    <MESSAGE value="workflow" />
+    <MESSAGE value="adjusted coordinate search for test_raster.tif" />
+    <option name="LAST_COMMIT_MESSAGE" value="adjusted coordinate search for test_raster.tif" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Photopotential_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1759310980478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
