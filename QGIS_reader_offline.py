@@ -1,7 +1,11 @@
 # Copy for in QGIS testing
 import os
 from qgis.core import *
+from qgis.utils import *
 from constants import *
+
+lat1, lon1 = 48.1549554,17.1650823
+lat2, lon2 = 48.1555931,17.1642535
 
 file_path = os.path.dirname(QgsProject.instance().fileName())
 raster_path = os.path.join(file_path, "data/test_raster.tif")
@@ -24,6 +28,41 @@ def basic_layer_set(layer):
     layer.resampleFilter().setZoomedInResampler(QgsBilinearRasterResampler())
     layer.resampleFilter().setZoomedOutResampler(QgsBilinearRasterResampler())
 
+def zoom_and_crop_qgis(lat1, lon1, lat2, lon2, layer, output_path="output.tif"):
+    src_crs = QgsCoordinateReferenceSystem("EPSG:4326")
+    dst_crs = layer.crs()
+    transform = QgsCoordinateTransform(src_crs, dst_crs, QgsProject.instance())
+    rect_wgs84 = QgsRectangle(lon1, lat1, lon2, lat2)
+    rect_proj = transform.transform(rect_wgs84)
+    try:
+        iface.mapCanvas().setExtent(rect_proj)
+        iface.mapCanvas().refresh()
+        print("zoom to coordinates.")
+    except Exception:
+        print("running outside QGIS; skipping zoom.")
+    provider: QgsRasterDataProvider = layer.dataProvider()
+    pipe = QgsRasterPipe()
+    if not pipe.set(provider.clone()):
+        raise Exception("failed to initialize pipe.")
+    writer = QgsRasterFileWriter(output_path)
+    writer.setOutputFormat("GTiff")
+    result = writer.writeRaster(
+        pipe,
+        layer.width(),
+        layer.height(),
+        rect_proj,
+        layer.crs()
+    )
+    if result != QgsRasterFileWriter.NoError:
+        raise Exception(f"raster writing failed with code: {result}")
+    cropped_layer = QgsRasterLayer(output_path, "Cropped (PyQGIS)")
+    if cropped_layer.isValid():
+        QgsProject.instance().addMapLayer(cropped_layer)
+        print(f"cropped raster saved and added to qgis: {output_path}")
+    else:
+        print(f"file created but not loaded: {output_path}")
+    return output_path
+
 if raster_layer.isValid():
     project = QgsProject.instance()
     for layer in project.mapLayers().values():
@@ -36,6 +75,9 @@ if raster_layer.isValid():
     # print("Sun layer check", rsun_apply(raster_path)['output'])
     # basic_layer_set(main_layer)
     render_set(main_layer, 315, 45)
+
+    layer = project.mapLayersByName(LAYER_NAME)[0]
+    zoom_and_crop_qgis(lat1, lon1, lat2, lon2, layer, r"data\output.tif")
 else:
     print("Raster layer is not valid")
 
