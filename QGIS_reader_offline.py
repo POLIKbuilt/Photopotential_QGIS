@@ -44,12 +44,20 @@ def zoom_and_crop_qgis(lat1, lon1, lat2, lon2, layer, output_path="output.tif"):
     pipe = QgsRasterPipe()
     if not pipe.set(provider.clone()):
         raise Exception("failed to initialize pipe.")
+    extent = layer.extent()
+    width = layer.width()
+    height = layer.height()
+    pixel_width = extent.width() / width
+    pixel_height = extent.height() / height
+
+    new_width = int(rect_proj.width() / pixel_width)
+    new_height = int(rect_proj.height() / pixel_height)
     writer = QgsRasterFileWriter(output_path)
     writer.setOutputFormat("GTiff")
     result = writer.writeRaster(
         pipe,
-        layer.width(),
-        layer.height(),
+        new_width,
+        new_height,
         rect_proj,
         layer.crs()
     )
