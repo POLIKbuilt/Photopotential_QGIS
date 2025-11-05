@@ -4,7 +4,7 @@ from qgis.core import *
 from constants import *
 
 file_path = os.path.dirname(QgsProject.instance().fileName())
-raster_path = os.path.join(file_path, "data\output.tif")
+raster_path = os.path.join(file_path, "data/test_raster.tif")
 raster_layer = QgsRasterLayer(raster_path, LAYER_NAME)
 vector_layer = QgsVectorLayer(raster_path, LAYER_NAME) # dont't work, not shp file
 
