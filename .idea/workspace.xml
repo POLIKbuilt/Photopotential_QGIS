@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="Refactored output.tif; Rewritten code for GDAL loading &gt;&gt;&gt; Error: NULL exception in output file.">
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="output.tif moved">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QGIS_reader_offline.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_offline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output.tif" beforeDir="false" afterPath="$PROJECT_DIR$/data/output.tif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output.tif.aux.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/output.tif.aux.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +77,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\IT\Fotopotencial_QGIS" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\IT\projects\Photopotential_QGIS\data" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -402,7 +407,31 @@
       <option name="project" value="LOCAL" />
       <updated>1761116171547</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="test workflow">
+      <option name="closed" value="true" />
+      <created>1762326900956</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1762326900956</updated>
+    </task>
+    <task id="LOCAL-00040" summary="test workflow">
+      <option name="closed" value="true" />
+      <created>1762326908686</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1762326908686</updated>
+    </task>
+    <task id="LOCAL-00041" summary="output.tif moved">
+      <option name="closed" value="true" />
+      <created>1762328179891</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1762328179891</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,8 +449,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adding offline raster" />
-    <MESSAGE value="Created WMS run file" />
     <MESSAGE value="Tests for offline loading raster" />
     <MESSAGE value="Tests for offline loading raster + changes to README.md" />
     <MESSAGE value="offline raster fix" />
@@ -445,7 +472,9 @@
     <MESSAGE value="refactored methods: load_layer &gt;&gt;&gt; load_output, cropping &gt;&gt;&gt; gdal_cropping" />
     <MESSAGE value="processing rgrass environment &gt;&gt;&gt; implementing rgrass_cropping method" />
     <MESSAGE value="adding rgrass cropping command&#10;fixing errors&#10;replacing create_extent method" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding rgrass cropping command&#10;fixing errors&#10;replacing create_extent method" />
+    <MESSAGE value="test workflow" />
+    <MESSAGE value="output.tif moved" />
+    <option name="LAST_COMMIT_MESSAGE" value="output.tif moved" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Photopotential_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1759310980478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
