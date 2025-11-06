@@ -37,13 +37,13 @@ def zoom_and_crop_qgis(lat1, lon1, lat2, lon2, layer, output_path="output.tif"):
     try:
         iface.mapCanvas().setExtent(rect_proj)
         iface.mapCanvas().refresh()
-        print("zoom to coordinates.")
+        print("zoom to coordinates")
     except Exception:
-        print("running outside QGIS; skipping zoom.")
+        print("running outside QGIS; skipping zoom")
     provider: QgsRasterDataProvider = layer.dataProvider()
     pipe = QgsRasterPipe()
     if not pipe.set(provider.clone()):
-        raise Exception("failed to initialize pipe.")
+        raise Exception("failed to initialize pipe")
     extent = layer.extent()
     width = layer.width()
     height = layer.height()
@@ -62,13 +62,13 @@ def zoom_and_crop_qgis(lat1, lon1, lat2, lon2, layer, output_path="output.tif"):
         layer.crs()
     )
     if result != QgsRasterFileWriter.NoError:
-        raise Exception(f"raster writing failed with code: {result}")
+        raise Exception(f"Raster writing failed >>> Code: {result}")
     cropped_layer = QgsRasterLayer(output_path, "Cropped (PyQGIS)")
     if cropped_layer.isValid():
         QgsProject.instance().addMapLayer(cropped_layer)
-        print(f"cropped raster saved and added to qgis: {output_path}")
+        print(f"cropped raster saved >>> {output_path}")
     else:
-        print(f"file created but not loaded: {output_path}")
+        print(f"file created but not loaded >>> {output_path}")
     return output_path
 
 if raster_layer.isValid():
