@@ -91,67 +91,11 @@ def load_output(layer_path):
     else:
         raise Exception(f"Layer is invalid!!! Check layer file >>> {OUTPUT_LAYER}")
 
-def save_visible_map_to_tif(output_path: str, width: int = 2048, height: int = 2048):
-    """
-    Saves the currently visible map area in QGIS (what's on screen)
-    to a GeoTIFF file using QgsRasterFileWriter.
-    No cropping, no GDAL, no processing — just the visible view.
-
-    Parameters
-    ----------
-    output_path : str
-        Path to output GeoTIFF file
-    width : int
-        Image width in pixels
-    height : int
-        Image height in pixels
-    """
-    # ----------------------------
-    # 1️⃣ Access current QGIS project and layers
-    # ----------------------------
-    project = QgsProject.instance()
-    layers = [lyr for lyr in project.mapLayers().values() if lyr.isValid()]
-
-    if not layers:
-        raise Exception("❌ No valid layers loaded in the project.")
-
-    print(f"✅ Found {len(layers)} valid layers to render.")
-
-    # ----------------------------
-    # 2️⃣ Prepare map settings (matches map canvas)
-    # ----------------------------
-    iface = globals().get("iface", None)
-    if iface:
-        extent = iface.mapCanvas().extent()
-        crs = iface.mapCanvas().mapSettings().destinationCrs()
-    else:
-        # fallback: use project extent and CRS
-        extent = project.layerTreeRoot().extent()
-        crs = QgsCoordinateReferenceSystem("EPSG:4326")
-
-    map_settings = QgsMapSettings()
-    map_settings.setLayers(layers)
-    map_settings.setExtent(extent)
-    map_settings.setOutputSize(QSize(width, height))
-    map_settings.setDestinationCrs(crs)
-    print("🗺️ Map settings prepared for rendering.")
-
-    # ----------------------------
-    # 3️⃣ Render visible map to QImage
-    # ----------------------------
-    job = QgsMapRendererParallelJob(map_settings)
-    job.start()
-    job.waitForFinished()
-    img = job.renderedImage()
-    print("🖼️ Visible map rendered to image.")
-    img.save(output_path, "tif")
-
 
 def wms_run():
     wms_layer = wms_layer_load(wms_url)
     qgis_cropping(X1, Y1, X2, Y2, wms_layer)
     raster_to_tif(LAYER_NAME, OUTPUT_LAYER)
-    # save_visible_map_to_tif(OUTPUT_LAYER)
     load_output(OUTPUT_LAYER)
     render_set(wms_layer, 315, 45)
 
