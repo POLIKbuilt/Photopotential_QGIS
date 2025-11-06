@@ -20,12 +20,6 @@ def init_qgis_app():
     print("QGIS app initialized")
     return app
 
-def create_extent(x1, y1, x2, y2):
-    transformer = Transformer.from_crs("EPSG:4326", "EPSG:3857", always_xy=True)
-    x_min, y_min = transformer.transform(y2, x2)  # note swapped order lon,lat
-    x_max, y_max = transformer.transform(y1, x1)
-    return [x_min, y_max, x_max, y_min]
-
 def wms_layer_load(layer):
     data_layer = QgsRasterLayer(layer, LAYER_NAME, "wms")
     if data_layer.isValid():
@@ -34,7 +28,7 @@ def wms_layer_load(layer):
             if layer.name() == LAYER_NAME:
                 project.removeMapLayer(layer.id())
         print("Cleaning project...")
-        project.addMapLayer(data_layer)
+        # project.addMapLayer(data_layer)
         print("WMS loaded successfully")
         return data_layer
     else:
@@ -50,72 +44,33 @@ def render_set(layer, azimuth, altitude):
     layer.setRenderer(renderer)
     layer.triggerRepaint()
 
-def qgis_cropping(x1, y1, x2, y2, layer, output_file):
-    crop_box = QgsRectangle(y1, x1, y2, x2)
-    src_crs = QgsCoordinateReferenceSystem("EPSG:4326")
-    dst_crs = layer.crs()
-    xfrom = QgsCoordinateTransform(src_crs, dst_crs, None)
-    box_proj = xfrom.transform(crop_box)
-    pipe = QgsRasterPipe()
-    pipe.set(layer.renderer())
+def qgis_cropping(x1, y1, x2, y2, layer, output_path, crs = "EPSG:4326"):
+    bbox = (y1, x1, y2, x2)
+    clipbox = QgsRectangle(bbox[0], bbox[1], bbox[2], bbox[3])
+    layer.setExtent(clipbox)
+    QgsProject.instance().addMapLayer(layer)
+    crs_obj = QgsCoordinateReferenceSystem(crs)
     provider = layer.dataProvider()
-    if not pipe.set(provider.clone()):
-        raise Exception("Failed to provide cropping layer")
-    save = QgsRasterFileWriter(output_file)
-    save.setOutputFormat("GTiff")
-    save.writeRaster(pipe, layer.width(), layer.height(), box_proj, layer.crs())
-    print(f"DSM/qgis saved to: {output_file}")
-
-def gdal_cropping(box):
-    # center_x, center_y = cords_to_xy(lat, lon)
-    # half = radius / 2
-    # box = QgsRectangle(center_x - half, center_y - half, center_x + half, center_y + half)
-    src = "data/test_raster.tif"
-    ds = gdal.Open(src)
-    if ds is None:
-        raise RuntimeError("Failed to open WMS source. Check URL and GDAL WMS driver.")
-    else:
-        print("WMS connection successful:", ds.RasterXSize, ds.RasterYSize)
-    crop = gdal.Translate(destName = OUTPUT_LAYER, srcDS = src, projWin = box, projWinSRS="EPSG:4326", format = "GTiff")
-    if crop is None:
-        raise RuntimeError("GDAL failed (NULL pointer)!!!")
-    crop = None
-    print(f"DSM/gdal saved to: {OUTPUT_LAYER}")
-
-def rgrass_cropping(x1, y1, x2, y2, layer, output_file):
-    gisdb = os.path.join(os.getcwd(), "grassdata")
-    location = "D:IT\Fotopotencial_QGIS\data"
-    mapset = "PERMANENT"
-    location_path = os.path.join(gisdb, location)
-    mapset_path = os.path.join(location_path, mapset)
-    os.makedirs(gisdb, exist_ok=True)
-    src = layer.dataProvider().dataSourceUri()
-    transformer = Transformer.from_crs("EPSG:4326", "EPSG:3857", always_xy=True)
-    x_min, y_min = transformer.transform(x1, y1)
-    x_max, y_max = transformer.transform(x2, y2)
-    gsetup.init(gisdb, location, mapset)
-    if not os.path.exists(mapset_path) or not os.path.exists(os.path.join(location_path, "PERMANENT", "DEFAULT")):
-        gscript.run_command("g.proj", epsg=3857, location=location, flags="c")
-    gscript.run_command("r.in.gdal", input=src, output="raster_in", overwrite=True)
-    gscript.run_command("g.region", n=y_max, s=y_min, e=x_max, w=x_min)
-    gscript.run_command("r.mapcalc", expression="raster_crop = raster_in", overwrite=True)
-    gscript.run_command("r.out.gdal", input="raster_crop", output=output_file, format="GTiff", createopt="COMPRESS=LZW", overwrite=True)
-    print(f"DSM/rgrass saved to: {output_file}")
+    pipe = QgsRasterPipe()
+    pipe.set(provider.clone())
+    writer = QgsRasterFileWriter(output_path)
+    writer.setOutputFormat("GTiff")
+    result = writer.writeRaster(pipe, provider.xSize(), provider.ySize(), provider.extent() ,crs_obj)
+    if result != QgsRasterFileWriter.NoError:
+        raise Exception(f"Raster writing failed >>> Code: {result}")
 
 def load_output(layer_path):
-    data_layer = QgsRasterLayer(layer_path, "output.tif")
+    data_layer = QgsRasterLayer(layer_path, "output")
     if data_layer.isValid():
         QgsProject.instance().addMapLayer(data_layer)
         print("output.tif loaded >>>")
     else:
-        raise Exception(f"Layer is invalid!!! Check layer file {OUTPUT_LAYER}")
-
+        raise Exception(f"Layer is invalid!!! Check layer file >>> {OUTPUT_LAYER}")
 
 def wms_run():
-    layer = wms_layer_load(wms_url)
-    # qgis_cropping(X1, Y1, X2, Y2, layer, OUTPUT_LAYER)
-    gdal_cropping([X1, Y1, X2, Y2])
-    # rgrass_cropping(X1, Y1, X2, Y2, layer, OUTPUT_LAYER)
+    wms_layer = wms_layer_load(wms_url)
+    qgis_cropping(X1, Y1, X2, Y2, wms_layer, OUTPUT_LAYER)
+    render_set(wms_layer, 315, 45)
     load_output(OUTPUT_LAYER)
 
 wms_run()
