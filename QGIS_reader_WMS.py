@@ -65,6 +65,7 @@ def raster_to_tif(layer_name, output_path):
     print(f"Found >>> {layer.name()}")
 
     provider = layer.dataProvider()
+    print("Width", provider.xSize())
     pipe = QgsRasterPipe()
     if not pipe.set(provider.clone()):
         raise Exception("WMS provider >>> Raster pipe failed")
@@ -149,8 +150,8 @@ def save_visible_map_to_tif(output_path: str, width: int = 2048, height: int = 2
 def wms_run():
     wms_layer = wms_layer_load(wms_url)
     qgis_cropping(X1, Y1, X2, Y2, wms_layer)
-    # raster_to_tif(LAYER_NAME, OUTPUT_LAYER)
-    save_visible_map_to_tif(OUTPUT_LAYER)
+    raster_to_tif(LAYER_NAME, OUTPUT_LAYER)
+    # save_visible_map_to_tif(OUTPUT_LAYER)
     load_output(OUTPUT_LAYER)
     render_set(wms_layer, 315, 45)
 
