@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="Testing exporting the WMS layer">
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="bad GPT function removed">
+      <change afterPath="$PROJECT_DIR$/basic_raster_loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/roof_analysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QGIS_reader_WMS.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_WMS.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QGIS_reader_offline.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_offline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/WMS_load.tif" beforeDir="false" afterPath="$PROJECT_DIR$/data/WMS_load.tif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output.tif" beforeDir="false" afterPath="$PROJECT_DIR$/data/output.tif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output.tif.aux.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/output.tif.aux.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,30 +106,6 @@
       <workItem from="1759099164157" duration="1263000" />
       <workItem from="1759907739714" duration="822000" />
       <workItem from="1760736089966" duration="4597000" />
-    </task>
-    <task id="LOCAL-00008" summary="Tests for offline loading raster + changes to README.md">
-      <option name="closed" value="true" />
-      <created>1758760840040</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1758760840040</updated>
-    </task>
-    <task id="LOCAL-00009" summary="offline raster fix">
-      <option name="closed" value="true" />
-      <created>1759307863481</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1759307863481</updated>
-    </task>
-    <task id="LOCAL-00010" summary="offline raster fix">
-      <option name="closed" value="true" />
-      <created>1759307920139</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1759307920139</updated>
     </task>
     <task id="LOCAL-00011" summary="offline raster fix">
       <option name="closed" value="true" />
@@ -496,7 +475,31 @@
       <option name="project" value="LOCAL" />
       <updated>1762392259279</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="README.md update">
+      <option name="closed" value="true" />
+      <created>1762421093915</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1762421093916</updated>
+    </task>
+    <task id="LOCAL-00058" summary="workflow">
+      <option name="closed" value="true" />
+      <created>1762421121349</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1762421121349</updated>
+    </task>
+    <task id="LOCAL-00059" summary="bad GPT function removed">
+      <option name="closed" value="true" />
+      <created>1762421160079</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1762421160079</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -514,8 +517,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixing WMS" />
-    <MESSAGE value="fix is not working" />
     <MESSAGE value="deleted lat/lon convertion method" />
     <MESSAGE value="new coordinate points added" />
     <MESSAGE value="implemented arguments for loading method" />
@@ -536,10 +537,12 @@
     <MESSAGE value="exceptions added to offline cropping" />
     <MESSAGE value="failed and unused methods moved to separate file for clean view" />
     <MESSAGE value="tif for new method" />
-    <MESSAGE value="workflow" />
     <MESSAGE value="All cropping methods changed to QgsSetExtent" />
     <MESSAGE value="Testing exporting the WMS layer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Testing exporting the WMS layer" />
+    <MESSAGE value="README.md update" />
+    <MESSAGE value="workflow" />
+    <MESSAGE value="bad GPT function removed" />
+    <option name="LAST_COMMIT_MESSAGE" value="bad GPT function removed" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Photopotential_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1759310980478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
