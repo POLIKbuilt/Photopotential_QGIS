@@ -8,8 +8,9 @@
    - GDAL >>> null pointer in output (failed on 16/10/2025)
    - GRASS environment >>> testing (failed on 19/10/2025)
    - Cropping offline WMS dataset (completed on 05/11/2025)
-   - Reloading WMS to offline dataset 
+   - Reloading WMS to offline dataset (working only manually 12/11/2025)
 3. Analysis of tilt and turn of roof parcels in boxing zone.
+   - Roof angle analysis via r.sun 
 4. Differentiation of roof vectors via QuickOSM (OverpassAPI) 
 
 ## Required libs and tools
