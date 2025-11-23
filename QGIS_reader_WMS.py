@@ -75,8 +75,8 @@ def raster_to_tif(layer_name, output_path):
     crs = layer.crs()
     print(f"Layer CRS >>> {crs.authid()}")
     print(f"Extent >>> {extent.toString()}")
-    width = 1024
-    height = 1024
+    width = 5000
+    height = 5000
     print(f"Raster dimensions >>> {width} x {height}")
     result = writer.writeRaster( pipe, width, height, extent, QgsCoordinateReferenceSystem(crs))
     if result != QgsRasterFileWriter.NoError:
