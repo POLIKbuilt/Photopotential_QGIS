@@ -10,7 +10,6 @@ lat2, lon2 = 48.1555931,17.1642535
 file_path = os.path.dirname(QgsProject.instance().fileName())
 raster_path = os.path.join(file_path, "data/test_raster.tif")
 raster_layer = QgsRasterLayer(raster_path, LAYER_NAME)
-vector_layer = QgsVectorLayer(raster_path, LAYER_NAME) # dont't work, not shp file
 
 def render_set(layer, azimuth, altitude):
     if layer and layer.isValid():
@@ -71,6 +70,8 @@ def zoom_and_crop_qgis(lat1, lon1, lat2, lon2, layer, output_path="output.tif"):
         print(f"file created but not loaded >>> {output_path}")
     return output_path
 
+
+
 if raster_layer.isValid():
     project = QgsProject.instance()
     for layer in project.mapLayers().values():
@@ -84,8 +85,31 @@ if raster_layer.isValid():
     # basic_layer_set(main_layer)
     render_set(main_layer, 315, 45)
 
-    layer = project.mapLayersByName(LAYER_NAME)[0]
-    zoom_and_crop_qgis(lat1, lon1, lat2, lon2, layer, r"data\output.tif")
+    params = {
+        'elevation': main_layer,  # input raster
+        'aspect': main_layer,
+        'slope': main_layer,
+        'linke': None,
+        'albedo': None,
+        'start_hour': 6,
+        'end_hour': 18,
+        'time_step': 1,
+        'day': 172,
+        'year': 2020,
+        'glob_rad': 'TEMPORARY_OUTPUT',
+        'insol_time': 'TEMPORARY_OUTPUT',  # QGIS will auto-generate output
+        'GRASS_REGION_PARAMETER': main_layer.extent(),
+        'GRASS_REGION_CELLSIZE_PARAMETER': main_layer.rasterUnitsPerPixelX()
+    }
+    feedback = QgsProcessingFeedback()
+    result = processing.run("grass7:r.sun.insoltime", params, feedback=feedback)
+    output_raster = result['glob_rad']
+    sol_raster = QgsRasterLayer(output_raster, "glob_rad_output")
+    if not sol_raster.isValid():
+        raise Exception("Output raster is not valid: " + output_raster)
+    QgsProject.instance().addMapLayer(sol_raster)
+
+    print("Finished: Insolation time raster added to QGIS.")
 else:
     print("Raster layer is not valid")
 
