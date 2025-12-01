@@ -70,7 +70,31 @@ def zoom_and_crop_qgis(lat1, lon1, lat2, lon2, layer, output_path="output.tif"):
         print(f"file created but not loaded >>> {output_path}")
     return output_path
 
-
+def glob_rad_check(layer, time_step, day, year):
+    params = {
+        'elevation': layer,  # input raster
+        'aspect': layer,
+        'slope': layer,
+        'linke': None,
+        'albedo': None,
+        'start_hour': 0,
+        'end_hour': 24,
+        'time_step': time_step,
+        'day': day,
+        'year': year,
+        'glob_rad': 'TEMPORARY_OUTPUT', # Set to TEMP for QGIS to auto-generate output
+        'insol_time': 'TEMPORARY_OUTPUT',
+        'GRASS_REGION_PARAMETER': layer.extent(),
+        'GRASS_REGION_CELLSIZE_PARAMETER': layer.rasterUnitsPerPixelX()
+    }
+    feedback = QgsProcessingFeedback()
+    result = processing.run("grass7:r.sun.insoltime", params, feedback=feedback)
+    output_raster = result['glob_rad']
+    sol_raster = QgsRasterLayer(output_raster, "glob_rad_output")
+    if not sol_raster.isValid():
+        raise Exception("Output raster is not valid: " + output_raster)
+    QgsProject.instance().addMapLayer(sol_raster)
+    print("Finished: Insolation time raster added to QGIS.")
 
 if raster_layer.isValid():
     project = QgsProject.instance()
@@ -81,35 +105,8 @@ if raster_layer.isValid():
     main_layer = project.addMapLayer(raster_layer)
     print("Raster layer loaded successfully")
     print("DSM CRS:", raster_layer.crs().authid())
-    # print("Sun layer check", rsun_apply(raster_path)['output'])
-    # basic_layer_set(main_layer)
     render_set(main_layer, 315, 45)
-
-    params = {
-        'elevation': main_layer,  # input raster
-        'aspect': main_layer,
-        'slope': main_layer,
-        'linke': None,
-        'albedo': None,
-        'start_hour': 6,
-        'end_hour': 18,
-        'time_step': 1,
-        'day': 172,
-        'year': 2020,
-        'glob_rad': 'TEMPORARY_OUTPUT',
-        'insol_time': 'TEMPORARY_OUTPUT',  # QGIS will auto-generate output
-        'GRASS_REGION_PARAMETER': main_layer.extent(),
-        'GRASS_REGION_CELLSIZE_PARAMETER': main_layer.rasterUnitsPerPixelX()
-    }
-    feedback = QgsProcessingFeedback()
-    result = processing.run("grass7:r.sun.insoltime", params, feedback=feedback)
-    output_raster = result['glob_rad']
-    sol_raster = QgsRasterLayer(output_raster, "glob_rad_output")
-    if not sol_raster.isValid():
-        raise Exception("Output raster is not valid: " + output_raster)
-    QgsProject.instance().addMapLayer(sol_raster)
-
-    print("Finished: Insolation time raster added to QGIS.")
+    glob_rad_check(main_layer, 1, 125, 2020)
 else:
     print("Raster layer is not valid")
 
