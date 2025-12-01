@@ -10,13 +10,15 @@
    - Cropping offline WMS dataset (completed on 05/11/2025)
    - Reloading WMS to offline dataset (working only manually 12/11/2025)
 3. Analysis of tilt and turn of roof parcels in boxing zone.
-   - Roof angle analysis via r.sun 
+   - Global radiation analysis via **r.sun.insoltime** (completed on 27/11/2025)
+   - Roof angle analysis output (In process)
 4. Differentiation of roof vectors via QuickOSM (OverpassAPI) 
 
 ## Required libs and tools
 ### Tools
 - Python 3.12 or higher 
 - QGIS Desktop 3.34 or higher
+- Installed GRASS 7 module
 ### Python libs
 - os (loading and saving results)
 - qgis.core (main API for contacting qgis)
