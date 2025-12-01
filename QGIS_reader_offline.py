@@ -70,7 +70,7 @@ def zoom_and_crop_qgis(lat1, lon1, lat2, lon2, layer, output_path="output.tif"):
         print(f"file created but not loaded >>> {output_path}")
     return output_path
 
-def glob_rad_check(layer, time_step, day, year):
+def glob_rad_check(layer, time_step, day, year, feedback):
     params = {
         'elevation': layer,  # input raster
         'aspect': layer,
@@ -87,7 +87,6 @@ def glob_rad_check(layer, time_step, day, year):
         'GRASS_REGION_PARAMETER': layer.extent(),
         'GRASS_REGION_CELLSIZE_PARAMETER': layer.rasterUnitsPerPixelX()
     }
-    feedback = QgsProcessingFeedback()
     result = processing.run("grass7:r.sun.insoltime", params, feedback=feedback)
     output_raster = result['glob_rad']
     sol_raster = QgsRasterLayer(output_raster, "glob_rad_output")
@@ -96,6 +95,14 @@ def glob_rad_check(layer, time_step, day, year):
     QgsProject.instance().addMapLayer(sol_raster)
     print("Finished: Insolation time raster added to QGIS.")
 
+def slope_calc(dem, file_path, feedback):
+    slope_result = processing.run("qgis:slope", {'INPUT': dem, 'Z_FACTOR': 1, 'OUTPUT': 'TEMPORARY_OUTPUT'}, feedback=feedback)
+    slope_raster = slope_result['OUTPUT']
+    slope_points = processing.run("qgis:rastersampling", {'INPUT': dem, 'RASTERCOPY': slope_raster, 'COLUMN_PREFIX': 'slope_', 'OUTPUT': 'TEMPORARY_OUTPUT'}, feedback=feedback)['OUTPUT']
+    output_slope_csv = os.path.join(file_path, "data/tmp/slope_points.csv")
+    processing.run("native:exporttodelimitedtext",{'INPUT': slope_points,'LAYER_OPTIONS': '','FILE_OPTIONS': '','OUTPUT': output_slope_csv},feedback=feedback)
+    print("Slope imported as csv >>> ")
+
 if raster_layer.isValid():
     project = QgsProject.instance()
     for layer in project.mapLayers().values():
@@ -103,10 +110,12 @@ if raster_layer.isValid():
             project.removeMapLayer(layer.id())
     print("Cleaning project...")
     main_layer = project.addMapLayer(raster_layer)
+    feedback = QgsProcessingFeedback()
     print("Raster layer loaded successfully")
     print("DSM CRS:", raster_layer.crs().authid())
     render_set(main_layer, 315, 45)
-    glob_rad_check(main_layer, 1, 125, 2020)
+    glob_rad_check(main_layer, 1, 125, 2020, feedback)
+    slope_calc(main_layer, file_path, feedback)
 else:
     print("Raster layer is not valid")
 
