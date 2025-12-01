@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="README.md update">
-      <change afterPath="$PROJECT_DIR$/11.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Fotopotencial_QGIS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Fotopotencial_QGIS.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment=" reoutputting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QGIS_reader_WMS.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_WMS.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/output.tif" beforeDir="false" afterPath="$PROJECT_DIR$/data/output.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/output.tif.aux.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/output.tif.aux.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/test_raster.tif.aux.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/test_raster.tif.aux.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/11.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QGIS_reader_offline.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_offline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,30 +50,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.11.executor": "Run",
-    "Python.QGIS_reader offline.executor": "Run",
-    "Python.QGIS_reader_WMS.executor": "Run",
-    "Python.QGIS_reader_offline.executor": "Run",
-    "Python.QGIS_reader_offline_COPY.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.test_frame.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/IT/Fotopotencial_QGIS/data",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.11.executor&quot;: &quot;Run&quot;,
+    &quot;Python.QGIS_reader offline.executor&quot;: &quot;Run&quot;,
+    &quot;Python.QGIS_reader_WMS.executor&quot;: &quot;Run&quot;,
+    &quot;Python.QGIS_reader_offline.executor&quot;: &quot;Run&quot;,
+    &quot;Python.QGIS_reader_offline_COPY.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_frame.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IT/Fotopotencial_QGIS/data&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\IT\Fotopotencial_QGIS\data" />
@@ -108,78 +103,6 @@
       <workItem from="1759099164157" duration="1263000" />
       <workItem from="1759907739714" duration="822000" />
       <workItem from="1760736089966" duration="4597000" />
-    </task>
-    <task id="LOCAL-00018" summary="offline raster fix, parameters failed">
-      <option name="closed" value="true" />
-      <created>1759310549757</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1759310549757</updated>
-    </task>
-    <task id="LOCAL-00019" summary="offline raster fix, rsun parameters">
-      <option name="closed" value="true" />
-      <created>1759310778800</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1759310778800</updated>
-    </task>
-    <task id="LOCAL-00020" summary="main added">
-      <option name="closed" value="true" />
-      <created>1759355573235</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1759355573235</updated>
-    </task>
-    <task id="LOCAL-00021" summary="filed modified">
-      <option name="closed" value="true" />
-      <created>1759355684024</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1759355684024</updated>
-    </task>
-    <task id="LOCAL-00022" summary="filed modified, offline raster fixed, hillshade render added">
-      <option name="closed" value="true" />
-      <created>1759356547873</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1759356547873</updated>
-    </task>
-    <task id="LOCAL-00023" summary="WMS raster tests, add xml for WMS">
-      <option name="closed" value="true" />
-      <created>1759358320776</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1759358320776</updated>
-    </task>
-    <task id="LOCAL-00024" summary="GUI turned off">
-      <option name="closed" value="true" />
-      <created>1759358575401</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1759358575401</updated>
-    </task>
-    <task id="LOCAL-00025" summary="WMS tests completed with success">
-      <option name="closed" value="true" />
-      <created>1759358668427</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1759358668427</updated>
-    </task>
-    <task id="LOCAL-00026" summary="adding coordinate boxing for wms">
-      <option name="closed" value="true" />
-      <created>1759401492020</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1759401492020</updated>
     </task>
     <task id="LOCAL-00027" summary="created constants.py">
       <option name="closed" value="true" />
@@ -501,7 +424,79 @@
       <option name="project" value="LOCAL" />
       <updated>1762999019255</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="workflow">
+      <option name="closed" value="true" />
+      <created>1763940042679</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1763940042679</updated>
+    </task>
+    <task id="LOCAL-00068" summary="workflow">
+      <option name="closed" value="true" />
+      <created>1763940045410</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1763940045410</updated>
+    </task>
+    <task id="LOCAL-00069" summary="workflow">
+      <option name="closed" value="true" />
+      <created>1763940048212</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1763940048212</updated>
+    </task>
+    <task id="LOCAL-00070" summary="workflow">
+      <option name="closed" value="true" />
+      <created>1763940058416</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1763940058416</updated>
+    </task>
+    <task id="LOCAL-00071" summary="output">
+      <option name="closed" value="true" />
+      <created>1763940065398</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1763940065398</updated>
+    </task>
+    <task id="LOCAL-00072" summary="testing and retesting grass r.sun">
+      <option name="closed" value="true" />
+      <created>1763940106382</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1763940106382</updated>
+    </task>
+    <task id="LOCAL-00073" summary="grass r.sun bug fixing">
+      <option name="closed" value="true" />
+      <created>1763940121635</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1763940121635</updated>
+    </task>
+    <task id="LOCAL-00074" summary="r.grass bugs">
+      <option name="closed" value="true" />
+      <created>1763940141591</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1763940141591</updated>
+    </task>
+    <task id="LOCAL-00075" summary=" reoutputting">
+      <option name="closed" value="true" />
+      <created>1763940274489</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1763940274489</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -519,11 +514,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="processing rgrass environment &gt;&gt;&gt; implementing rgrass_cropping method" />
-    <MESSAGE value="adding rgrass cropping command&#10;fixing errors&#10;replacing create_extent method" />
-    <MESSAGE value="test workflow" />
-    <MESSAGE value="output.tif moved" />
-    <MESSAGE value="output.tif rewritten in process" />
     <MESSAGE value="rewritten in process" />
     <MESSAGE value="add zoom and crop method" />
     <MESSAGE value="cropping worked" />
@@ -535,7 +525,6 @@
     <MESSAGE value="tif for new method" />
     <MESSAGE value="All cropping methods changed to QgsSetExtent" />
     <MESSAGE value="Testing exporting the WMS layer" />
-    <MESSAGE value="workflow" />
     <MESSAGE value="bad GPT function removed" />
     <MESSAGE value="separate file-method for loading any layer" />
     <MESSAGE value="test path const added" />
@@ -544,7 +533,13 @@
     <MESSAGE value="calculator file added" />
     <MESSAGE value="code outputs" />
     <MESSAGE value="README.md update" />
-    <option name="LAST_COMMIT_MESSAGE" value="README.md update" />
+    <MESSAGE value="workflow" />
+    <MESSAGE value="output" />
+    <MESSAGE value="testing and retesting grass r.sun" />
+    <MESSAGE value="grass r.sun bug fixing" />
+    <MESSAGE value="r.grass bugs" />
+    <MESSAGE value=" reoutputting" />
+    <option name="LAST_COMMIT_MESSAGE" value=" reoutputting" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Photopotential_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1759310980478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
