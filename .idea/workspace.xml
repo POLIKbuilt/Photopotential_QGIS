@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment=" reoutputting">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/11.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/QGIS_reader_offline.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_offline.py" afterDir="false" />
-    </list>
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="r.sun.insoltime implemented as method" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -103,38 +99,6 @@
       <workItem from="1759099164157" duration="1263000" />
       <workItem from="1759907739714" duration="822000" />
       <workItem from="1760736089966" duration="4597000" />
-    </task>
-    <task id="LOCAL-00027" summary="created constants.py">
-      <option name="closed" value="true" />
-      <created>1759908160355</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1759908160355</updated>
-    </task>
-    <task id="LOCAL-00028" summary="fixing WMS">
-      <option name="closed" value="true" />
-      <created>1759941197020</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1759941197020</updated>
-    </task>
-    <task id="LOCAL-00029" summary="fix is not working">
-      <option name="closed" value="true" />
-      <created>1759943716119</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1759943716119</updated>
-    </task>
-    <task id="LOCAL-00030" summary="fix is not working">
-      <option name="closed" value="true" />
-      <created>1759946356258</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1759946356258</updated>
     </task>
     <task id="LOCAL-00031" summary="deleted lat/lon convertion method">
       <option name="closed" value="true" />
@@ -496,7 +460,39 @@
       <option name="project" value="LOCAL" />
       <updated>1763940274489</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="applying r.sun.insoltime">
+      <option name="closed" value="true" />
+      <created>1764561282534</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1764561282535</updated>
+    </task>
+    <task id="LOCAL-00077" summary="removed useless code">
+      <option name="closed" value="true" />
+      <created>1764561548238</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1764561548238</updated>
+    </task>
+    <task id="LOCAL-00078" summary="processing tests">
+      <option name="closed" value="true" />
+      <created>1764561559362</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1764561559362</updated>
+    </task>
+    <task id="LOCAL-00079" summary="r.sun.insoltime implemented as method">
+      <option name="closed" value="true" />
+      <created>1764561584736</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1764561584736</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -514,10 +510,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="rewritten in process" />
-    <MESSAGE value="add zoom and crop method" />
-    <MESSAGE value="cropping worked" />
-    <MESSAGE value="cropping file manage" />
     <MESSAGE value="adjusted coordinate search for test_raster.tif" />
     <MESSAGE value="WMS_load constant added" />
     <MESSAGE value="exceptions added to offline cropping" />
@@ -539,7 +531,11 @@
     <MESSAGE value="grass r.sun bug fixing" />
     <MESSAGE value="r.grass bugs" />
     <MESSAGE value=" reoutputting" />
-    <option name="LAST_COMMIT_MESSAGE" value=" reoutputting" />
+    <MESSAGE value="applying r.sun.insoltime" />
+    <MESSAGE value="removed useless code" />
+    <MESSAGE value="processing tests" />
+    <MESSAGE value="r.sun.insoltime implemented as method" />
+    <option name="LAST_COMMIT_MESSAGE" value="r.sun.insoltime implemented as method" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Photopotential_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1759310980478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
