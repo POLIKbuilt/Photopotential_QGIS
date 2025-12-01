@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="r.sun.insoltime implemented as method" />
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="more tests">
+      <change afterPath="$PROJECT_DIR$/data/tmp/slope_points.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QGIS_reader_offline.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_offline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/111.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/111.tif.aux.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output - Copy.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output - Copy.tif.aux.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/output.tif.aux.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/result/aspect.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/result/aspect.tif.aux.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/result/slope.tif" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,14 +113,6 @@
       <workItem from="1759099164157" duration="1263000" />
       <workItem from="1759907739714" duration="822000" />
       <workItem from="1760736089966" duration="4597000" />
-    </task>
-    <task id="LOCAL-00031" summary="deleted lat/lon convertion method">
-      <option name="closed" value="true" />
-      <created>1760736732730</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1760736732730</updated>
     </task>
     <task id="LOCAL-00032" summary="new coordinate points added">
       <option name="closed" value="true" />
@@ -492,7 +498,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764561584736</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="more tests">
+      <option name="closed" value="true" />
+      <created>1764561646798</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1764561646798</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,7 +524,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adjusted coordinate search for test_raster.tif" />
     <MESSAGE value="WMS_load constant added" />
     <MESSAGE value="exceptions added to offline cropping" />
     <MESSAGE value="failed and unused methods moved to separate file for clean view" />
@@ -535,7 +548,8 @@
     <MESSAGE value="removed useless code" />
     <MESSAGE value="processing tests" />
     <MESSAGE value="r.sun.insoltime implemented as method" />
-    <option name="LAST_COMMIT_MESSAGE" value="r.sun.insoltime implemented as method" />
+    <MESSAGE value="more tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="more tests" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Photopotential_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1759310980478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
