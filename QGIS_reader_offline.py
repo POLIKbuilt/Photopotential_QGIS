@@ -3,6 +3,10 @@ import os
 from qgis.core import *
 from qgis.utils import *
 from constants import *
+from quick_osm.core.query_factory import QueryFactoryExtent
+from quick_osm.core.api import OverpassAPI
+from quick_osm.core.utilities import osm_downloader
+from quick_osm.core.utilities import layer_loader
 
 lat1, lon1 = 48.1549554,17.1650823
 lat2, lon2 = 48.1555931,17.1642535
@@ -95,6 +99,19 @@ def glob_rad_check(layer, time_step, day, year, feedback):
     QgsProject.instance().addMapLayer(sol_raster)
     print("Finished: Insolation time raster added to QGIS.")
 
+def overpassAPI_query(layer):
+    extent = layer.extent()
+    query = QueryFactoryExtent().set_extent(extent).build(
+        key="building:part",
+        value="roof",
+        geom="multipolygons"  # roof polygons
+    )
+    api = OverpassAPI()
+    xml_data = api.make_request(query)
+    osm_file = osm_downloader.save_osm_data(xml_data)
+    layer_loader.load(osm_file)
+    print("Roof polygons loaded from OSM.")
+
 def slope_calc(dem, file_path, feedback):
     slope_result = processing.run("qgis:slope", {'INPUT': dem, 'Z_FACTOR': 1, 'OUTPUT': 'TEMPORARY_OUTPUT'}, feedback=feedback)
     slope_raster = slope_result['OUTPUT']
@@ -114,8 +131,9 @@ if raster_layer.isValid():
     print("Raster layer loaded successfully")
     print("DSM CRS:", raster_layer.crs().authid())
     render_set(main_layer, 315, 45)
-    glob_rad_check(main_layer, 1, 125, 2020, feedback)
-    slope_calc(main_layer, file_path, feedback)
+    # glob_rad_check(main_layer, 1, 125, 2020, feedback)
+    # slope_calc(main_layer, file_path, feedback)
+    overpassAPI_query(main_layer)
 else:
     print("Raster layer is not valid")
 
