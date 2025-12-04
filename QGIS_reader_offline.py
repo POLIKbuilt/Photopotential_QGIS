@@ -3,10 +3,7 @@ import os
 from qgis.core import *
 from qgis.utils import *
 from constants import *
-from quick_osm.core.query_factory import QueryFactoryExtent
-from quick_osm.core.api import OverpassAPI
-from quick_osm.core.utilities import osm_downloader
-from quick_osm.core.utilities import layer_loader
+from osgeo import gdal
 
 lat1, lon1 = 48.1549554,17.1650823
 lat2, lon2 = 48.1555931,17.1642535
@@ -14,6 +11,9 @@ lat2, lon2 = 48.1555931,17.1642535
 file_path = os.path.dirname(QgsProject.instance().fileName())
 raster_path = os.path.join(file_path, "data/test_raster.tif")
 raster_layer = QgsRasterLayer(raster_path, LAYER_NAME)
+slope_path = os.path.join(file_path, "data/tmp/slope.tif")
+aspect_path = os.path.join(file_path, "data/tmp/aspect.tif")
+
 
 def render_set(layer, azimuth, altitude):
     if layer and layer.isValid():
@@ -99,17 +99,44 @@ def glob_rad_check(layer, time_step, day, year, feedback):
     QgsProject.instance().addMapLayer(sol_raster)
     print("Finished: Insolation time raster added to QGIS.")
 
-def overpassAPI_query(layer):
-    extent = layer.extent()
-    query = QueryFactoryExtent().set_extent(extent).build(
-        key="building:part",
-        value="roof",
-        geom="multipolygons"  # roof polygons
+def gdal_aspect_aspect(raster_path, aspect_path, slope_path):
+    gdal.DEMProcessing(
+        slope_path,
+        raster_path,
+        "slope",
+        format="GTiff",
+        computeEdges=True,
+        slopeFormat="degree"  # degree or percent
     )
-    api = OverpassAPI()
-    xml_data = api.make_request(query)
-    osm_file = osm_downloader.save_osm_data(xml_data)
-    layer_loader.load(osm_file)
+    gdal.DEMProcessing(
+        aspect_path,
+        raster_path,
+        "aspect",
+        format="GTiff",
+        computeEdges=True
+    )
+    slope_rlayer = QgsRasterLayer(slope_path, "slope")
+    aspect_rlayer = QgsRasterLayer(aspect_path, "aspect")
+    if slope_rlayer.isValid() and aspect_rlayer.isValid():
+        QgsProject.instance().addMapLayer(slope_rlayer)
+        QgsProject.instance().addMapLayer(aspect_rlayer)
+        print("Slope and Aspect Rasters added to QGIS.")
+    else:
+        raise Exception("Slope and Aspect Rasters not valid")
+
+def overpassAPI_query(layer):
+    result = processing.run(
+        "quickosm:extract",
+        {
+            'INPUT': layer,
+            'KEY': 'building:part',
+            'VALUE': 'roof',
+            'OUTPUT': 'memory:'  # create new memory layer
+        }
+    )
+
+    roof_layer = result['OUTPUT']
+    QgsProject.instance().addMapLayer(roof_layer)
     print("Roof polygons loaded from OSM.")
 
 def slope_calc(dem, file_path, feedback):
@@ -133,7 +160,8 @@ if raster_layer.isValid():
     render_set(main_layer, 315, 45)
     # glob_rad_check(main_layer, 1, 125, 2020, feedback)
     # slope_calc(main_layer, file_path, feedback)
-    overpassAPI_query(main_layer)
+    # overpassAPI_query(main_layer)
+    gdal_aspect_aspect(raster_path, aspect_path, slope_path)
 else:
     print("Raster layer is not valid")
 

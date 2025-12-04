@@ -4,20 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="more tests">
-      <change afterPath="$PROJECT_DIR$/data/tmp/slope_points.csv" afterDir="false" />
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="first try on QuickOSM in Python">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QGIS_reader_offline.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_offline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/111.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/111.tif.aux.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/output - Copy.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/output - Copy.tif.aux.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/output.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/output.tif.aux.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/result/aspect.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/result/aspect.tif.aux.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/result/slope.tif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/tmp/aspect.tif" beforeDir="false" afterPath="$PROJECT_DIR$/data/tmp/aspect.tif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/tmp/aspect.tif.aux.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,70 +104,6 @@
       <workItem from="1759099164157" duration="1263000" />
       <workItem from="1759907739714" duration="822000" />
       <workItem from="1760736089966" duration="4597000" />
-    </task>
-    <task id="LOCAL-00032" summary="new coordinate points added">
-      <option name="closed" value="true" />
-      <created>1760736856102</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1760736856102</updated>
-    </task>
-    <task id="LOCAL-00033" summary="implemented arguments for loading method">
-      <option name="closed" value="true" />
-      <created>1760737283264</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1760737283264</updated>
-    </task>
-    <task id="LOCAL-00034" summary="moved x,y from constants.py to global variables">
-      <option name="closed" value="true" />
-      <created>1761114503709</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1761114503709</updated>
-    </task>
-    <task id="LOCAL-00035" summary="recreated method for cropping in qgis &gt;&gt;&gt; using basic qgis functions">
-      <option name="closed" value="true" />
-      <created>1761115260971</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1761115260971</updated>
-    </task>
-    <task id="LOCAL-00036" summary="refactored methods: load_layer &gt;&gt;&gt; load_output, cropping &gt;&gt;&gt; gdal_cropping">
-      <option name="closed" value="true" />
-      <created>1761115456171</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1761115456171</updated>
-    </task>
-    <task id="LOCAL-00037" summary="processing rgrass environment &gt;&gt;&gt; implementing rgrass_cropping method">
-      <option name="closed" value="true" />
-      <created>1761115812303</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1761115812303</updated>
-    </task>
-    <task id="LOCAL-00038" summary="adding rgrass cropping command&#10;fixing errors&#10;replacing create_extent method">
-      <option name="closed" value="true" />
-      <created>1761116171547</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1761116171547</updated>
-    </task>
-    <task id="LOCAL-00039" summary="test workflow">
-      <option name="closed" value="true" />
-      <created>1762326900956</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1762326900956</updated>
     </task>
     <task id="LOCAL-00040" summary="test workflow">
       <option name="closed" value="true" />
@@ -506,7 +433,71 @@
       <option name="project" value="LOCAL" />
       <updated>1764561646798</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="old outputs moved">
+      <option name="closed" value="true" />
+      <created>1764562980460</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1764562980460</updated>
+    </task>
+    <task id="LOCAL-00082" summary="copies deleted">
+      <option name="closed" value="true" />
+      <created>1764563028909</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1764563028909</updated>
+    </task>
+    <task id="LOCAL-00083" summary="output path unified">
+      <option name="closed" value="true" />
+      <created>1764563048296</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1764563048297</updated>
+    </task>
+    <task id="LOCAL-00084" summary="output .csv created">
+      <option name="closed" value="true" />
+      <created>1764563118092</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1764563118092</updated>
+    </task>
+    <task id="LOCAL-00085" summary="running">
+      <option name="closed" value="true" />
+      <created>1764563127983</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1764563127983</updated>
+    </task>
+    <task id="LOCAL-00086" summary=".cvs output attempts">
+      <option name="closed" value="true" />
+      <created>1764563145790</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1764563145790</updated>
+    </task>
+    <task id="LOCAL-00087" summary="README.md update">
+      <option name="closed" value="true" />
+      <created>1764563158718</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1764563158718</updated>
+    </task>
+    <task id="LOCAL-00088" summary="first try on QuickOSM in Python">
+      <option name="closed" value="true" />
+      <created>1764803732626</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1764803732626</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -524,20 +515,12 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="WMS_load constant added" />
-    <MESSAGE value="exceptions added to offline cropping" />
-    <MESSAGE value="failed and unused methods moved to separate file for clean view" />
-    <MESSAGE value="tif for new method" />
-    <MESSAGE value="All cropping methods changed to QgsSetExtent" />
-    <MESSAGE value="Testing exporting the WMS layer" />
-    <MESSAGE value="bad GPT function removed" />
     <MESSAGE value="separate file-method for loading any layer" />
     <MESSAGE value="test path const added" />
     <MESSAGE value="output tif rewritten by code" />
     <MESSAGE value="WMS export removed due to huge size" />
     <MESSAGE value="calculator file added" />
     <MESSAGE value="code outputs" />
-    <MESSAGE value="README.md update" />
     <MESSAGE value="workflow" />
     <MESSAGE value="output" />
     <MESSAGE value="testing and retesting grass r.sun" />
@@ -549,7 +532,15 @@
     <MESSAGE value="processing tests" />
     <MESSAGE value="r.sun.insoltime implemented as method" />
     <MESSAGE value="more tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="more tests" />
+    <MESSAGE value="old outputs moved" />
+    <MESSAGE value="copies deleted" />
+    <MESSAGE value="output path unified" />
+    <MESSAGE value="output .csv created" />
+    <MESSAGE value="running" />
+    <MESSAGE value=".cvs output attempts" />
+    <MESSAGE value="README.md update" />
+    <MESSAGE value="first try on QuickOSM in Python" />
+    <option name="LAST_COMMIT_MESSAGE" value="first try on QuickOSM in Python" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Photopotential_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1759310980478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
