@@ -1,5 +1,7 @@
 # Copy for in QGIS testing
 import os
+import csv
+import numpy as np
 from qgis.core import *
 from qgis.utils import *
 from constants import *
@@ -13,6 +15,7 @@ raster_path = os.path.join(file_path, "data/test_raster.tif")
 raster_layer = QgsRasterLayer(raster_path, LAYER_NAME)
 slope_path = os.path.join(file_path, "data/tmp/slope.tif")
 aspect_path = os.path.join(file_path, "data/tmp/aspect.tif")
+csv_path = os.path.join(file_path, "data/tmp/aspect_points.csv")
 
 
 def render_set(layer, azimuth, altitude):
@@ -100,21 +103,8 @@ def glob_rad_check(layer, time_step, day, year, feedback):
     print("Finished: Insolation time raster added to QGIS.")
 
 def gdal_aspect_aspect(raster_path, aspect_path, slope_path):
-    gdal.DEMProcessing(
-        slope_path,
-        raster_path,
-        "slope",
-        format="GTiff",
-        computeEdges=True,
-        slopeFormat="degree"  # degree or percent
-    )
-    gdal.DEMProcessing(
-        aspect_path,
-        raster_path,
-        "aspect",
-        format="GTiff",
-        computeEdges=True
-    )
+    gdal.DEMProcessing(slope_path, raster_path, "slope", format="GTiff", computeEdges=True, slopeFormat="degree")
+    gdal.DEMProcessing(aspect_path, raster_path, "aspect", format="GTiff", computeEdges=True)
     slope_rlayer = QgsRasterLayer(slope_path, "slope")
     aspect_rlayer = QgsRasterLayer(aspect_path, "aspect")
     if slope_rlayer.isValid() and aspect_rlayer.isValid():
@@ -123,6 +113,18 @@ def gdal_aspect_aspect(raster_path, aspect_path, slope_path):
         print("Slope and Aspect Rasters added to QGIS.")
     else:
         raise Exception("Slope and Aspect Rasters not valid")
+    slope_ds = gdal.Open(slope_path)
+    aspect_ds = gdal.Open(aspect_path)
+    slope = slope_ds.GetRasterBand(1).ReadAsArray()
+    aspect = aspect_ds.GetRasterBand(1).ReadAsArray()
+    rows, cols = slope.shape
+    with open(csv_path, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["row", "col", "slope", "aspect"])
+        for r in range(rows):
+            for c in range(cols):
+                writer.writerow([r, c, float(slope[r, c]), float(aspect[r, c])])
+    print("CSV file created:", csv_path)
 
 def overpassAPI_query(layer):
     result = processing.run(
@@ -134,7 +136,6 @@ def overpassAPI_query(layer):
             'OUTPUT': 'memory:'  # create new memory layer
         }
     )
-
     roof_layer = result['OUTPUT']
     QgsProject.instance().addMapLayer(roof_layer)
     print("Roof polygons loaded from OSM.")
