@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="README.md update">
-      <change beforePath="$PROJECT_DIR$/.idea/Fotopotencial_QGIS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Fotopotencial_QGIS.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="update in README.md">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/QGIS_reader_offline.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_offline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/unused_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/unused_functions.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,30 +48,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.11.executor&quot;: &quot;Run&quot;,
-    &quot;Python.QGIS_reader offline.executor&quot;: &quot;Run&quot;,
-    &quot;Python.QGIS_reader_WMS.executor&quot;: &quot;Run&quot;,
-    &quot;Python.QGIS_reader_offline.executor&quot;: &quot;Run&quot;,
-    &quot;Python.QGIS_reader_offline_COPY.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test_frame.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/IT/Fotopotencial_QGIS/data&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.11.executor": "Run",
+    "Python.QGIS_reader offline.executor": "Run",
+    "Python.QGIS_reader_WMS.executor": "Run",
+    "Python.QGIS_reader_offline.executor": "Run",
+    "Python.QGIS_reader_offline_COPY.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.test_frame.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/IT/Fotopotencial_QGIS/data",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\IT\Fotopotencial_QGIS\data" />
@@ -107,86 +106,6 @@
       <workItem from="1759099164157" duration="1263000" />
       <workItem from="1759907739714" duration="822000" />
       <workItem from="1760736089966" duration="4597000" />
-    </task>
-    <task id="LOCAL-00044" summary="rewritten in process">
-      <option name="closed" value="true" />
-      <created>1762329320538</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1762329320538</updated>
-    </task>
-    <task id="LOCAL-00045" summary="add zoom and crop method">
-      <option name="closed" value="true" />
-      <created>1762329341948</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1762329341948</updated>
-    </task>
-    <task id="LOCAL-00046" summary="cropping worked">
-      <option name="closed" value="true" />
-      <created>1762330752438</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1762330752438</updated>
-    </task>
-    <task id="LOCAL-00047" summary="cropping file manage">
-      <option name="closed" value="true" />
-      <created>1762330765423</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1762330765423</updated>
-    </task>
-    <task id="LOCAL-00048" summary="workflow">
-      <option name="closed" value="true" />
-      <created>1762330776430</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1762330776430</updated>
-    </task>
-    <task id="LOCAL-00049" summary="adjusted coordinate search for test_raster.tif">
-      <option name="closed" value="true" />
-      <created>1762330807026</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1762330807026</updated>
-    </task>
-    <task id="LOCAL-00050" summary="WMS_load constant added">
-      <option name="closed" value="true" />
-      <created>1762389608024</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1762389608024</updated>
-    </task>
-    <task id="LOCAL-00051" summary="exceptions added to offline cropping">
-      <option name="closed" value="true" />
-      <created>1762389648844</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1762389648844</updated>
-    </task>
-    <task id="LOCAL-00052" summary="failed and unused methods moved to separate file for clean view">
-      <option name="closed" value="true" />
-      <created>1762389687389</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1762389687389</updated>
-    </task>
-    <task id="LOCAL-00053" summary="tif for new method">
-      <option name="closed" value="true" />
-      <created>1762389702497</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1762389702497</updated>
     </task>
     <task id="LOCAL-00054" summary="workflow">
       <option name="closed" value="true" />
@@ -500,7 +419,87 @@
       <option name="project" value="LOCAL" />
       <updated>1764838620522</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="delete tmp xml data">
+      <option name="closed" value="true" />
+      <created>1765930738151</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1765930738152</updated>
+    </task>
+    <task id="LOCAL-00094" summary="delete tmp xml data">
+      <option name="closed" value="true" />
+      <created>1765930743713</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1765930743713</updated>
+    </task>
+    <task id="LOCAL-00095" summary="delete tmp xml data">
+      <option name="closed" value="true" />
+      <created>1765930749708</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1765930749708</updated>
+    </task>
+    <task id="LOCAL-00096" summary="delete tmp xml data">
+      <option name="closed" value="true" />
+      <created>1765930752663</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1765930752663</updated>
+    </task>
+    <task id="LOCAL-00097" summary="delete tmp xml data">
+      <option name="closed" value="true" />
+      <created>1765930755512</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1765930755512</updated>
+    </task>
+    <task id="LOCAL-00098" summary="change of the interpreter in PyCharm">
+      <option name="closed" value="true" />
+      <created>1765930802865</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1765930802865</updated>
+    </task>
+    <task id="LOCAL-00099" summary="change in basic name">
+      <option name="closed" value="true" />
+      <created>1765930820157</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1765930820157</updated>
+    </task>
+    <task id="LOCAL-00100" summary="zoom_and_crop_qgis moved to unused_functions.py">
+      <option name="closed" value="true" />
+      <created>1765930853207</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1765930853207</updated>
+    </task>
+    <task id="LOCAL-00101" summary="roof finder and pv_check methods added; both use OverpassAPI data to compute slope and aspect of roofs.">
+      <option name="closed" value="true" />
+      <created>1765930914509</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1765930914509</updated>
+    </task>
+    <task id="LOCAL-00102" summary="update in README.md">
+      <option name="closed" value="true" />
+      <created>1765931613811</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1765931613811</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -518,12 +517,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="output tif rewritten by code" />
-    <MESSAGE value="WMS export removed due to huge size" />
-    <MESSAGE value="calculator file added" />
-    <MESSAGE value="code outputs" />
-    <MESSAGE value="workflow" />
-    <MESSAGE value="output" />
     <MESSAGE value="testing and retesting grass r.sun" />
     <MESSAGE value="grass r.sun bug fixing" />
     <MESSAGE value="r.grass bugs" />
@@ -543,7 +536,13 @@
     <MESSAGE value="slope and aspect layer define method added" />
     <MESSAGE value="csv read/write added for slope and aspect" />
     <MESSAGE value="README.md update" />
-    <option name="LAST_COMMIT_MESSAGE" value="README.md update" />
+    <MESSAGE value="delete tmp xml data" />
+    <MESSAGE value="change of the interpreter in PyCharm" />
+    <MESSAGE value="change in basic name" />
+    <MESSAGE value="zoom_and_crop_qgis moved to unused_functions.py" />
+    <MESSAGE value="roof finder and pv_check methods added; both use OverpassAPI data to compute slope and aspect of roofs." />
+    <MESSAGE value="update in README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="update in README.md" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Photopotential_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1759310980478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
