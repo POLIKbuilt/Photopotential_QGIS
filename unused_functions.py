@@ -86,3 +86,47 @@ def create_extent(x1, y1, x2, y2):
     x_min, y_min = transformer.transform(y2, x2)  # note swapped order lon,lat
     x_max, y_max = transformer.transform(y1, x1)
     return [x_min, y_max, x_max, y_min]
+
+
+def zoom_and_crop_qgis(lat1, lon1, lat2, lon2, layer, output_path="output.tif"):
+    src_crs = QgsCoordinateReferenceSystem("EPSG:4326")
+    dst_crs = layer.crs()
+    transform = QgsCoordinateTransform(src_crs, dst_crs, QgsProject.instance())
+    rect_wgs84 = QgsRectangle(lon1, lat1, lon2, lat2)
+    rect_proj = transform.transform(rect_wgs84)
+    try:
+        iface.mapCanvas().setExtent(rect_proj)
+        iface.mapCanvas().refresh()
+        print("zoom to coordinates")
+    except Exception:
+        print("running outside QGIS; skipping zoom")
+    provider: QgsRasterDataProvider = layer.dataProvider()
+    pipe = QgsRasterPipe()
+    if not pipe.set(provider.clone()):
+        raise Exception("failed to initialize pipe")
+    extent = layer.extent()
+    width = layer.width()
+    height = layer.height()
+    pixel_width = extent.width() / width
+    pixel_height = extent.height() / height
+
+    new_width = int(rect_proj.width() / pixel_width)
+    new_height = int(rect_proj.height() / pixel_height)
+    writer = QgsRasterFileWriter(output_path)
+    writer.setOutputFormat("GTiff")
+    result = writer.writeRaster(
+        pipe,
+        new_width,
+        new_height,
+        rect_proj,
+        layer.crs()
+    )
+    if result != QgsRasterFileWriter.NoError:
+        raise Exception(f"Raster writing failed >>> Code: {result}")
+    cropped_layer = QgsRasterLayer(output_path, "Cropped (PyQGIS)")
+    if cropped_layer.isValid():
+        QgsProject.instance().addMapLayer(cropped_layer)
+        print(f"cropped raster saved >>> {output_path}")
+    else:
+        print(f"file created but not loaded >>> {output_path}")
+    return output_path
