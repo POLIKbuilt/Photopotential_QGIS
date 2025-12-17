@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="slope and aspect layer define method added">
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="README.md update">
+      <change beforePath="$PROJECT_DIR$/.idea/Fotopotencial_QGIS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Fotopotencial_QGIS.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/QGIS_reader_offline.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_offline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/tmp/aspect_points.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/tmp/aspect_points.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unused_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/unused_functions.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,30 +107,6 @@
       <workItem from="1759099164157" duration="1263000" />
       <workItem from="1759907739714" duration="822000" />
       <workItem from="1760736089966" duration="4597000" />
-    </task>
-    <task id="LOCAL-00041" summary="output.tif moved">
-      <option name="closed" value="true" />
-      <created>1762328179891</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1762328179891</updated>
-    </task>
-    <task id="LOCAL-00042" summary="output.tif rewritten in process">
-      <option name="closed" value="true" />
-      <created>1762329291404</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1762329291404</updated>
-    </task>
-    <task id="LOCAL-00043" summary="rewritten in process">
-      <option name="closed" value="true" />
-      <created>1762329315240</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1762329315240</updated>
     </task>
     <task id="LOCAL-00044" summary="rewritten in process">
       <option name="closed" value="true" />
@@ -495,7 +476,31 @@
       <option name="project" value="LOCAL" />
       <updated>1764806604130</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="csv read/write added for slope and aspect">
+      <option name="closed" value="true" />
+      <created>1764807986258</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1764807986258</updated>
+    </task>
+    <task id="LOCAL-00091" summary="csv read/write added for slope and aspect">
+      <option name="closed" value="true" />
+      <created>1764807993679</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1764807993679</updated>
+    </task>
+    <task id="LOCAL-00092" summary="README.md update">
+      <option name="closed" value="true" />
+      <created>1764838620521</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1764838620522</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,7 +518,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test path const added" />
     <MESSAGE value="output tif rewritten by code" />
     <MESSAGE value="WMS export removed due to huge size" />
     <MESSAGE value="calculator file added" />
@@ -535,10 +539,11 @@
     <MESSAGE value="output .csv created" />
     <MESSAGE value="running" />
     <MESSAGE value=".cvs output attempts" />
-    <MESSAGE value="README.md update" />
     <MESSAGE value="first try on QuickOSM in Python" />
     <MESSAGE value="slope and aspect layer define method added" />
-    <option name="LAST_COMMIT_MESSAGE" value="slope and aspect layer define method added" />
+    <MESSAGE value="csv read/write added for slope and aspect" />
+    <MESSAGE value="README.md update" />
+    <option name="LAST_COMMIT_MESSAGE" value="README.md update" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Photopotential_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1759310980478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
