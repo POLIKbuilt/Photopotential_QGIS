@@ -1,11 +1,10 @@
 # Copy for in QGIS testing
 import os
 import csv
-import numpy as np
 from qgis.core import *
 from qgis.utils import *
 from constants import *
-from osgeo import gdal
+
 
 lat1, lon1 = 48.1549554,17.1650823
 lat2, lon2 = 48.1555931,17.1642535
@@ -22,60 +21,11 @@ def render_set(layer, azimuth, altitude):
     if layer and layer.isValid():
         print("Rerendering: ", layer.name())
     else:
-        print("Layer is invalid or has been deleted.")
+        print("ERROR >>> Layer is invalid or has been deleted.")
     input_layer = layer.dataProvider()
     renderer = QgsHillshadeRenderer( input_layer, 1, azimuth, altitude)
     layer.setRenderer(renderer)
     layer.triggerRepaint()
-
-def basic_layer_set(layer):
-    layer.setCrs(QgsCoordinateReferenceSystem("EPSG:4326"))
-    layer.renderer().setOpacity(0)
-    layer.resampleFilter().setZoomedInResampler(QgsBilinearRasterResampler())
-    layer.resampleFilter().setZoomedOutResampler(QgsBilinearRasterResampler())
-
-def zoom_and_crop_qgis(lat1, lon1, lat2, lon2, layer, output_path="output.tif"):
-    src_crs = QgsCoordinateReferenceSystem("EPSG:4326")
-    dst_crs = layer.crs()
-    transform = QgsCoordinateTransform(src_crs, dst_crs, QgsProject.instance())
-    rect_wgs84 = QgsRectangle(lon1, lat1, lon2, lat2)
-    rect_proj = transform.transform(rect_wgs84)
-    try:
-        iface.mapCanvas().setExtent(rect_proj)
-        iface.mapCanvas().refresh()
-        print("zoom to coordinates")
-    except Exception:
-        print("running outside QGIS; skipping zoom")
-    provider: QgsRasterDataProvider = layer.dataProvider()
-    pipe = QgsRasterPipe()
-    if not pipe.set(provider.clone()):
-        raise Exception("failed to initialize pipe")
-    extent = layer.extent()
-    width = layer.width()
-    height = layer.height()
-    pixel_width = extent.width() / width
-    pixel_height = extent.height() / height
-
-    new_width = int(rect_proj.width() / pixel_width)
-    new_height = int(rect_proj.height() / pixel_height)
-    writer = QgsRasterFileWriter(output_path)
-    writer.setOutputFormat("GTiff")
-    result = writer.writeRaster(
-        pipe,
-        new_width,
-        new_height,
-        rect_proj,
-        layer.crs()
-    )
-    if result != QgsRasterFileWriter.NoError:
-        raise Exception(f"Raster writing failed >>> Code: {result}")
-    cropped_layer = QgsRasterLayer(output_path, "Cropped (PyQGIS)")
-    if cropped_layer.isValid():
-        QgsProject.instance().addMapLayer(cropped_layer)
-        print(f"cropped raster saved >>> {output_path}")
-    else:
-        print(f"file created but not loaded >>> {output_path}")
-    return output_path
 
 def glob_rad_check(layer, time_step, day, year, feedback):
     params = {
@@ -98,21 +48,23 @@ def glob_rad_check(layer, time_step, day, year, feedback):
     output_raster = result['glob_rad']
     sol_raster = QgsRasterLayer(output_raster, "glob_rad_output")
     if not sol_raster.isValid():
-        raise Exception("Output raster is not valid: " + output_raster)
+        raise Exception("ERROR >>> Output raster is not valid: " + output_raster)
     QgsProject.instance().addMapLayer(sol_raster)
     print("Finished: Insolation time raster added to QGIS.")
 
-def gdal_aspect_aspect(raster_path, aspect_path, slope_path):
+
+'''
+def gdal_aspect_slope(raster_path, aspect_path, slope_path):
     gdal.DEMProcessing(slope_path, raster_path, "slope", format="GTiff", computeEdges=True, slopeFormat="degree")
     gdal.DEMProcessing(aspect_path, raster_path, "aspect", format="GTiff", computeEdges=True)
-    slope_rlayer = QgsRasterLayer(slope_path, "slope")
-    aspect_rlayer = QgsRasterLayer(aspect_path, "aspect")
-    if slope_rlayer.isValid() and aspect_rlayer.isValid():
-        QgsProject.instance().addMapLayer(slope_rlayer)
-        QgsProject.instance().addMapLayer(aspect_rlayer)
+    slope_layer = QgsRasterLayer(slope_path, "slope")
+    aspect_layer = QgsRasterLayer(aspect_path, "aspect")
+    if slope_layer.isValid() and aspect_layer.isValid():
+        QgsProject.instance().addMapLayer(slope_layer)
+        QgsProject.instance().addMapLayer(aspect_layer)
         print("Slope and Aspect Rasters added to QGIS.")
     else:
-        raise Exception("Slope and Aspect Rasters not valid")
+        raise Exception("ERROR >>> Slope and Aspect Rasters not valid")
     slope_ds = gdal.Open(slope_path)
     aspect_ds = gdal.Open(aspect_path)
     slope = slope_ds.GetRasterBand(1).ReadAsArray()
@@ -124,47 +76,144 @@ def gdal_aspect_aspect(raster_path, aspect_path, slope_path):
         for r in range(rows):
             for c in range(cols):
                 writer.writerow([r, c, float(slope[r, c]), float(aspect[r, c])])
-    print("CSV file created:", csv_path)
+    print("CSV file created >>>", csv_path)
+'''
 
-def overpassAPI_query(layer):
-    result = processing.run(
-        "quickosm:extract",
-        {
-            'INPUT': layer,
-            'KEY': 'building:part',
-            'VALUE': 'roof',
-            'OUTPUT': 'memory:'  # create new memory layer
-        }
-    )
-    roof_layer = result['OUTPUT']
+
+def overpassAPI_roof_finder(layer):
+    extent = layer.extent()
+    params = {
+        'KEY': 'roof:shape',
+        'VALUE': '',
+        'TYPE_MULTI_REQUEST': '',
+        'EXTENT': extent,
+        'TIMEOUT': 25,
+        'SERVER': 'https://overpass.kumi.systems/api/interpreter',
+        'OUTPUT': 'TEMPORARY_OUTPUT'
+    }
+    result = processing.run("quickosm:downloadosmdataextentquery", params)
+    # print(result)
+    roofs_vector = QgsProject.instance().addMapLayer(result['OUTPUT_MULTIPOLYGONS'])
+    roofs_proj = processing.run("native:reprojectlayer",{'INPUT': roofs_vector,'TARGET_CRS': layer.crs(),'OUTPUT': 'memory:roofs_proj'})['OUTPUT']
+    # QgsProject.instance().addMapLayer(roofs_proj)
+    px_x = layer.rasterUnitsPerPixelX()
+    px_y = layer.rasterUnitsPerPixelY()
+    rasterize_params = {
+        'INPUT': roofs_proj,
+        'FIELD': None,
+        'BURN': 1,  # roof = 1
+        'UNITS': 1,  # map units
+        'WIDTH': px_x,
+        'HEIGHT': px_y,
+        'EXTENT': extent,
+        'NODATA': 0,  # non-roof = 0
+        'DATA_TYPE': 5,  # UInt16
+        'INIT': 0,
+        'INVERT': False,
+        'EXTRA': '',
+        'OUTPUT': 'TEMPORARY_OUTPUT'
+    }
+    roof_raster  = processing.run("gdal:rasterize", rasterize_params)
+    # print("Rasterizing >>>", roof_raster)
+    roof_layer = QgsRasterLayer(roof_raster['OUTPUT'], "roof_raster")
     QgsProject.instance().addMapLayer(roof_layer)
-    print("Roof polygons loaded from OSM.")
+    dsm_roofs = processing.run(
+        "gdal:rastercalculator",
+        {
+            'INPUT_A': layer,
+            'BAND_A': 1,
+            'INPUT_B': roof_layer,
+            'BAND_B': 1,
+            'FORMULA': 'A * B',
+            'NO_DATA': -9999,
+            'RTYPE': 5,
+            'OUTPUT': 'memory:dsm_roofs'
+        }
+    )['OUTPUT']
+    dsm_roofs_layer = QgsRasterLayer(dsm_roofs, 'dsm_roofs')
+    QgsProject.instance().addMapLayer(dsm_roofs_layer)
+    print("QUICK OSM FINISHED!!! Final layer >>> dsm_roofs")
+    return dsm_roofs_layer
 
-def slope_calc(dem, file_path, feedback):
-    slope_result = processing.run("qgis:slope", {'INPUT': dem, 'Z_FACTOR': 1, 'OUTPUT': 'TEMPORARY_OUTPUT'}, feedback=feedback)
-    slope_raster = slope_result['OUTPUT']
-    slope_points = processing.run("qgis:rastersampling", {'INPUT': dem, 'RASTERCOPY': slope_raster, 'COLUMN_PREFIX': 'slope_', 'OUTPUT': 'TEMPORARY_OUTPUT'}, feedback=feedback)['OUTPUT']
-    output_slope_csv = os.path.join(file_path, "data/tmp/slope_points.csv")
-    processing.run("native:exporttodelimitedtext",{'INPUT': slope_points,'LAYER_OPTIONS': '','FILE_OPTIONS': '','OUTPUT': output_slope_csv},feedback=feedback)
-    print("Slope imported as csv >>> ")
+def roof_pv_check(dsm_roofs):
+    #----------------SLOPE-------------------------
+    roof_slope = processing.run("gdal:slope",
+        {
+            'INPUT': dsm_roofs,
+            'BAND': 1,
+            'SCALE': 1,
+            'AS_PERCENT': False,
+            'COMPUTE_EDGES': True,
+            'ZEVENBERGEN': False,
+            'OUTPUT': 'TEMPORARY_OUTPUT'
+        }
+    )['OUTPUT']
+    roof_slope_layer = QgsRasterLayer(roof_slope, 'roof_slope')
+    # QgsProject.instance().addMapLayer(roof_slope_layer)
+    print("Roof Slope analyse finished without ERRORs. >>> 'roof_slope' loaded to QGIS")
+    #-------------FLAT ROOFS CHECK (< 5)--------------------
+    flat_roofs = processing.run("gdal:rastercalculator",
+        {
+            'INPUT_A': roof_slope,
+            'BAND_A': 1,
+            'FORMULA': 'A <= 5',
+            'RTYPE': 5,
+            'NO_DATA': 0,
+            'OUTPUT': 'memory:flat_roofs'
+        }
+    )['OUTPUT']
+    flat_roofs_layer = QgsRasterLayer(flat_roofs, 'flat_roofs')
+    # QgsProject.instance().addMapLayer(flat_roofs_layer)
+    print("Flat roofs check analyse finished without ERRORs. >>> 'flat_roofs' loaded to QGIS")
+    #--------------ASPECT (0-360)-----------------------------
+    roof_aspect = processing.run("gdal:aspect",
+        {
+            'INPUT': dsm_roofs,
+            'BAND': 1,
+            'TRIG_ANGLE': False,
+            'ZERO_FOR_FLAT': True,
+            'COMPUTE_EDGES': True,
+            'OUTPUT': 'TEMPORARY_OUTPUT'
+        }
+    )['OUTPUT']
+    roof_aspect_layer = QgsRasterLayer(roof_aspect, 'roof_aspect')
+    QgsProject.instance().addMapLayer(roof_aspect_layer)
+    print("Roof aspect analyse finished without ERRORs. >>> 'roof_aspect' loaded to QGIS")
+    #--------------Suitability Check----------------------------
+    pv_roofs = processing.run("gdal:rastercalculator",
+        {
+            'INPUT_A': roof_aspect,
+            'BAND_A': 1,
+            'INPUT_B': roof_slope,
+            'BAND_B': 1,
+            'FORMULA': '((A>=135 AND A<=225) AND (B>=5 AND B<=35)) * (B>=0)',
+            'RTYPE': 5,
+            'NO_DATA': 0,
+            'OUTPUT': 'TEMPORARY_OUTPUT'
+        }
+    )['OUTPUT']
+    pv_roofs_layer = QgsRasterLayer(pv_roofs, 'pv_roofs')
+    QgsProject.instance().addMapLayer(pv_roofs_layer)
+    print("PV roofs analyse finished without ERRORs. >>> 'pv_roofs' loaded to QGIS")
 
+#-----------------------MAIN--------------------------------
 if raster_layer.isValid():
     project = QgsProject.instance()
-    for layer in project.mapLayers().values():
-        if layer.name() == LAYER_NAME:
-            project.removeMapLayer(layer.id())
+    project.removeAllMapLayers()
     print("Cleaning project...")
     main_layer = project.addMapLayer(raster_layer)
     feedback = QgsProcessingFeedback()
-    print("Raster layer loaded successfully")
+    print("Raster >>>", LAYER_NAME,">>> loaded successfully")
     print("DSM CRS:", raster_layer.crs().authid())
     render_set(main_layer, 315, 45)
-    # glob_rad_check(main_layer, 1, 125, 2020, feedback)
+    # glob_rad_check(main_layer, 1, 255, 2015, feedback)
     # slope_calc(main_layer, file_path, feedback)
-    # overpassAPI_query(main_layer)
-    gdal_aspect_aspect(raster_path, aspect_path, slope_path)
+    # gdal_aspect_slope(raster_path, aspect_path, slope_path)
+    roof = overpassAPI_roof_finder(main_layer)
+    roof_pv_check(roof)
+
 else:
-    print("Raster layer is not valid")
+    raise Exception("ERROR >>> Raster layer is not valid")
 
 
 
