@@ -1,4 +1,4 @@
-LAYER_NAME = "Working layer"
+LAYER_NAME = "TEST DSM"
 TEST_PATH = r"data\test_raster.tif"
 OUTPUT_LAYER = r"data\output.tif"
 WMS_LOAD_PATH = r"data\WMS_load.tif"
