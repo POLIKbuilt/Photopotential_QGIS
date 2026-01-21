@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="update in README.md">
+    <list default="true" id="f473c393-dc30-4491-8975-f16315fb9dff" name="Changes" comment="LICENSE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QGIS_reader_offline.py" beforeDir="false" afterPath="$PROJECT_DIR$/QGIS_reader_offline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,35 +49,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.11.executor": "Run",
-    "Python.QGIS_reader offline.executor": "Run",
-    "Python.QGIS_reader_WMS.executor": "Run",
-    "Python.QGIS_reader_offline.executor": "Run",
-    "Python.QGIS_reader_offline_COPY.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.test_frame.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/IT/Fotopotencial_QGIS/data",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.11.executor&quot;: &quot;Run&quot;,
+    &quot;Python.QGIS_reader offline.executor&quot;: &quot;Run&quot;,
+    &quot;Python.QGIS_reader_WMS.executor&quot;: &quot;Run&quot;,
+    &quot;Python.QGIS_reader_offline.executor&quot;: &quot;Run&quot;,
+    &quot;Python.QGIS_reader_offline_COPY.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_frame.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/IT/Fotopotencial_QGIS/data&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "PLAIN_TEXT"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;PLAIN_TEXT&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\IT\Fotopotencial_QGIS\data" />
@@ -106,14 +107,6 @@
       <workItem from="1759099164157" duration="1263000" />
       <workItem from="1759907739714" duration="822000" />
       <workItem from="1760736089966" duration="4597000" />
-    </task>
-    <task id="LOCAL-00054" summary="workflow">
-      <option name="closed" value="true" />
-      <created>1762389711309</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1762389711309</updated>
     </task>
     <task id="LOCAL-00055" summary="All cropping methods changed to QgsSetExtent">
       <option name="closed" value="true" />
@@ -499,7 +492,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765931613811</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="LICENSE">
+      <option name="closed" value="true" />
+      <created>1765931820866</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1765931820866</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -517,7 +518,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="testing and retesting grass r.sun" />
     <MESSAGE value="grass r.sun bug fixing" />
     <MESSAGE value="r.grass bugs" />
     <MESSAGE value=" reoutputting" />
@@ -542,7 +542,8 @@
     <MESSAGE value="zoom_and_crop_qgis moved to unused_functions.py" />
     <MESSAGE value="roof finder and pv_check methods added; both use OverpassAPI data to compute slope and aspect of roofs." />
     <MESSAGE value="update in README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="update in README.md" />
+    <MESSAGE value="LICENSE" />
+    <option name="LAST_COMMIT_MESSAGE" value="LICENSE" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Photopotential_QGIS$QGIS_reader_offline_COPY.coverage" NAME="QGIS_reader_offline_COPY Coverage Results" MODIFIED="1759310980478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

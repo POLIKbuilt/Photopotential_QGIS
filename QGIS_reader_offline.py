@@ -1,10 +1,9 @@
-# Copy for in QGIS testing
+# imported libs
 import os
 import csv
 from qgis.core import *
 from qgis.utils import *
 from constants import *
-
 
 lat1, lon1 = 48.1549554,17.1650823
 lat2, lon2 = 48.1555931,17.1642535
@@ -52,43 +51,15 @@ def glob_rad_check(layer, time_step, day, year, feedback):
     QgsProject.instance().addMapLayer(sol_raster)
     print("Finished: Insolation time raster added to QGIS.")
 
-
-'''
-def gdal_aspect_slope(raster_path, aspect_path, slope_path):
-    gdal.DEMProcessing(slope_path, raster_path, "slope", format="GTiff", computeEdges=True, slopeFormat="degree")
-    gdal.DEMProcessing(aspect_path, raster_path, "aspect", format="GTiff", computeEdges=True)
-    slope_layer = QgsRasterLayer(slope_path, "slope")
-    aspect_layer = QgsRasterLayer(aspect_path, "aspect")
-    if slope_layer.isValid() and aspect_layer.isValid():
-        QgsProject.instance().addMapLayer(slope_layer)
-        QgsProject.instance().addMapLayer(aspect_layer)
-        print("Slope and Aspect Rasters added to QGIS.")
-    else:
-        raise Exception("ERROR >>> Slope and Aspect Rasters not valid")
-    slope_ds = gdal.Open(slope_path)
-    aspect_ds = gdal.Open(aspect_path)
-    slope = slope_ds.GetRasterBand(1).ReadAsArray()
-    aspect = aspect_ds.GetRasterBand(1).ReadAsArray()
-    rows, cols = slope.shape
-    with open(csv_path, "w", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerow(["row", "col", "slope", "aspect"])
-        for r in range(rows):
-            for c in range(cols):
-                writer.writerow([r, c, float(slope[r, c]), float(aspect[r, c])])
-    print("CSV file created >>>", csv_path)
-'''
-
-
 def overpassAPI_roof_finder(layer):
     extent = layer.extent()
     params = {
-        'KEY': 'roof:shape',
+        'KEY': 'building',
         'VALUE': '',
         'TYPE_MULTI_REQUEST': '',
         'EXTENT': extent,
-        'TIMEOUT': 25,
-        'SERVER': 'https://overpass.kumi.systems/api/interpreter',
+        'TIMEOUT': 120,
+        'SERVER': 'https://overpass-api.de/api/interpreter',
         'OUTPUT': 'TEMPORARY_OUTPUT'
     }
     result = processing.run("quickosm:downloadosmdataextentquery", params)
@@ -186,7 +157,7 @@ def roof_pv_check(dsm_roofs):
             'BAND_A': 1,
             'INPUT_B': roof_slope,
             'BAND_B': 1,
-            'FORMULA': '((A>=135 AND A<=225) AND (B>=5 AND B<=35)) * (B>=0)',
+            'FORMULA': '((A>=135 AND A<=225) AND (B>=0 AND B<=35))',
             'RTYPE': 5,
             'NO_DATA': 0,
             'OUTPUT': 'TEMPORARY_OUTPUT'
