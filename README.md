@@ -1,4 +1,52 @@
-## Rooftop Photovoltaic Potential Estimation Automatization via QGIS
+## Rooftop Photovoltaic Potential Estimation Tool for QGIS
+
+## Required Tools and Libs
+### Tools
+- Python 3.12 or higher 
+- QGIS Desktop 3.34 or higher
+- Installed QGIS plugins: GRASS 7, QuickOSM
+### Python libs
+- os (loading and saving data files)
+- csv (table data output)
+- qgis.core (main API for contacting qgis)
+- qgis.utils (Canvas tools API)
+- osgeo (gdal tools) 
+- grass.scripts && grass.scrips.setup
+
+## Code Structure
+
+```
+HV_Transmission_Line_Analysis/
+├── main.py                     # main execution script
+├── constants.py                # Static Data and Strings  *on check for refactor*
+├── basic_raster_loader.py      # script for loading raster into QGIS *marked for called method*
+├── QGIS_reader_offline.py      # reader of offline raster *marked to Class based file* 
+├── QGIS_reader_WMS.py          # reader of online raster *marked for refactor*
+├── roof_analysis.py            # script for roof dividing *marked for refactor*
+└── data/
+    ├── test_raster.tif         # testing input file
+    └── tmp/                    
+        ├── aspect.tif          # updatable raster of aspect
+        ├── output.tif          # output variant of file
+        ├── slope.tif           # updatable raster of slope
+        ├── aspect_points.csv   # updatable table of aspect *marked for refactor*
+        └── slope_points.csv    # updatable table of slope *marked for refactor*
+```
+
+### Main methods
+
+#### **Render_Set** Method
+Method applies more efficient render style for loaded layer.
+
+#### **glob_rad_check** Method
+Method uses grass region parameters to apply sun insolation simulation for choosen date and time.
+
+#### **overpassApi_roof_finder** Method
+Method applies OverpassAPI to find and separate roof detected on the loaded layer.
+
+#### **roof_pv_check** Method
+This method applies and calculates all the nessecary conditions for detected roofs. (flat, slope and aspect)
+
 ### Actual tasks: 
 1. Process automated loading of rasters into QGIS via Python script (completed on 01/10/2025)
     - as an offline file.
@@ -22,38 +70,3 @@
 5. Complete PV analysis and structured output. (in process)
    - Coloring of suitable roofs;
    - Table/CSV output;
-
-
-## Required Libs and Tools
-### Tools
-- Python 3.12 or higher 
-- QGIS Desktop 3.34 or higher
-- Installed plugins: GRASS 7, QuickOSM
-### Python libs
-- os (loading and saving results)
-- csv (data output)
-- qgis.core (main API for contacting qgis)
-- qgis.utils (API woking with canvas)
-- osgeo (gdal)
-- grass.scripts && grass.scrips.setup 
-
-
-## Code Structure
-
-```
-HV_Transmission_Line_Analysis/
-├── main.py                     # main execution script
-├── constants.py                # Static Data and Strings 
-├── basic_raster_loader.py      # script for loading raster into QGIS
-├── QGIS_reader_offline.py      # reader of offline raster 
-├── QGIS_reader_offline.py      # reader of online raster
-├── roof_analysis.py            # script for roof dividing
-└── data/
-    ├── test_raster.tif         # testing input file
-    └── tmp/                    
-        ├── aspect.tif          # updatable raster of aspect
-        ├── output.tif          # output variant of file
-        ├── slope.tif           # updatable raster of slope
-        ├── aspect_points.csv   # updatable table of aspect
-        └── slope_points.csv    # updatable table of slope
-```
